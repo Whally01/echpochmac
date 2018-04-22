@@ -1,4 +1,4 @@
-package ru.itis.echpochmac.controller;
+package ru.itis.echpochmac.controller.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,7 +52,7 @@ public class UserAuthController {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        loginRequest.getLoginOrPhone_number(),
+                        loginRequest.getLoginOrPhone(),
                         loginRequest.getPassword()
                 )
         );

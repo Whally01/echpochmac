@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
                 .anyRequest().authenticated();
 
