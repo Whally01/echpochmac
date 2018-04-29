@@ -53,9 +53,8 @@ public class User extends DateAudit {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 
     public User() {
     }
@@ -116,14 +115,6 @@ public class User extends DateAudit {
         this.roles = roles;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -146,5 +137,13 @@ public class User extends DateAudit {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }

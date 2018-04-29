@@ -77,7 +77,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.js").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
+//                .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
+                .antMatchers("/dishes/addDishes/**").permitAll()
+                .antMatchers("/cafes/addCafes/**").permitAll()
+                .antMatchers("/categories/addCategory/**").permitAll()
+                .antMatchers("/orders/addOrder/**").permitAll()
                 .anyRequest().authenticated();
 
         // Add our custom JWT security filter
