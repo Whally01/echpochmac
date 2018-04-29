@@ -30,14 +30,6 @@ public class Dish {
     @Size(max = 40)
     private String description;
 
-    @NotBlank
-    @Size(max = 40)
-    private String cafeName;
-
-    @NotBlank
-    @Size(max = 40)
-    private String categoryName;
-
     @ManyToOne (fetch=FetchType.LAZY,
             cascade=CascadeType.ALL)
     @JoinColumn (name="cafe_id")
@@ -51,13 +43,13 @@ public class Dish {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public Dish(String name, String img, String description, double price, String cafeName, String categoryName) {
+    public Dish(){}
+
+    public Dish(String name, String img, String description, double price) {
         this.name = name;
         this.img = img;
         this.description = description;
         this.price = price;
-        this.cafeName = cafeName;
-        this.categoryName = categoryName;
     }
 
     public Long getId() {
@@ -109,28 +101,12 @@ public class Dish {
         this.cafe = cafe;
     }
 
-    public String getCafeName() {
-        return cafeName;
-    }
-
-    public void setCafeName(String cafeName) {
-        this.cafeName = cafeName;
-    }
-
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 
     public Order getOrder() {

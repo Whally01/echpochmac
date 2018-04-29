@@ -10,9 +10,6 @@ public class OrderPayLoad {
     private Long quantity;
 
     @NotNull
-    private Long priceDish;
-
-    @NotNull
     private Integer priceOrder;
 
     @NotBlank
@@ -29,14 +26,6 @@ public class OrderPayLoad {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
-    }
-
-    public Long getPriceDish() {
-        return priceDish;
-    }
-
-    public void setPriceDish(Long priceDish) {
-        this.priceDish = priceDish;
     }
 
     public Integer getPriceOrder() {

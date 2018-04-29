@@ -50,11 +50,8 @@ public class DishController {
 
 
         //Create Dish
-        Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice(), dishPayLoad.getCafeName(), dishPayLoad.getCategoryName());
-        Cafe cafe = cafeRepository.findCafeByName(dish.getCafeName());
-        Category category = categoryRepository.findCategoryByName(dish.getCategoryName());
-        dish.setCafe(cafe);
-        dish.setCategory(category);
+        Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
+
         Dish result = dishRepository.save(dish);
 
         URI location = ServletUriComponentsBuilder

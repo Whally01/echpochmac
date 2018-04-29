@@ -23,8 +23,7 @@ public class OrderController {
 
     @PostMapping("/addOrder")
     public ResponseEntity<?> addOrder(@Valid @RequestBody OrderPayLoad orderPayLoad){
-        Order order = new Order(orderPayLoad.getQuantity(),
-                orderPayLoad.getPriceDish(), orderPayLoad.getPriceOrder(),
+        Order order = new Order(orderPayLoad.getQuantity(), orderPayLoad.getPriceOrder(),
                 orderPayLoad.getComment(), orderPayLoad.getDestinationAddress());
         Order result = orderRepository.save(order);
 

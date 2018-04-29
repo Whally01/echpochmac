@@ -20,14 +20,6 @@ public class DishPayLoad {
     @Size(max = 40)
     private String description;
 
-    @NotBlank
-    @Size(max = 40)
-    private String cafeName;
-
-    @NotBlank
-    @Size(max = 40)
-    private String categoryName;
-
     public String getName() {
         return name;
     }
@@ -58,21 +50,5 @@ public class DishPayLoad {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getCafeName() {
-        return cafeName;
-    }
-
-    public void setCafeName(String cafeName) {
-        this.cafeName = cafeName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 }

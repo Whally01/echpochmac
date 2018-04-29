@@ -20,9 +20,6 @@ public class Order {
     private Long quantity;
 
     @NotNull
-    private Long priceDish;
-
-    @NotNull
     private Integer priceOrder;
 
     @NotBlank
@@ -40,13 +37,10 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<Dish> dishes;
 
-    public Order(Long userId, Long dishId, String destinationAddress) {
-        this.destinationAddress = destinationAddress;
-    }
+    public Order(){}
 
-    public Order(Long quantity, Long priceDish, Integer priceOrder, String comment, String destinationAddress){
+    public Order(Long quantity, Integer priceOrder, String comment, String destinationAddress){
         this.quantity = quantity;
-        this.priceDish = priceDish;
         this.priceOrder = priceOrder;
         this.comment = comment;
         this. destinationAddress = destinationAddress;
@@ -74,14 +68,6 @@ public class Order {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
-    }
-
-    public Long getPriceDish() {
-        return priceDish;
-    }
-
-    public void setPriceDish(Long priceDish) {
-        this.priceDish = priceDish;
     }
 
     public Integer getPriceOrder() {
