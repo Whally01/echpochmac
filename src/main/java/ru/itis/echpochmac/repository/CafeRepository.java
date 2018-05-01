@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface CafeRepository extends JpaRepository<Cafe, Long> {
-    Cafe findCafeByName(String name);
+    Optional<Cafe> findCafeByName(String name);
 }

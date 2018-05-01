@@ -19,11 +19,15 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping(name = "/admin/auth")
 public class AdminAuthController {
-    @Autowired
-    AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtTokenProvider tokenProvider;
 
     @Autowired
-    JwtTokenProvider tokenProvider;
+    public AdminAuthController(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
+        this.authenticationManager = authenticationManager;
+        this.tokenProvider = tokenProvider;
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateAdmin(@Valid @RequestBody LoginRequest loginRequest) {

@@ -19,19 +19,19 @@ public class UserPrincipal implements UserDetails {
     @JsonIgnore
     private String login;
 
-    private String phone_number;
+    private String phone;
 
     @JsonIgnore
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(Long id, String firstname, String lastname, String login, String phone_number, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(Long id, String firstname, String lastname, String login, String phone, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
-        this.phone_number = phone_number;
+        this.phone = phone;
         this.password = password;
         this.authorities = authorities;
     }
@@ -64,8 +64,8 @@ public class UserPrincipal implements UserDetails {
         return lastname;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhone() {
+        return phone;
     }
 
     @Override

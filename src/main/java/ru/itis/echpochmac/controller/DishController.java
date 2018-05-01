@@ -18,6 +18,8 @@ import ru.itis.echpochmac.payload.DishPayLoad;
 import ru.itis.echpochmac.repository.CafeRepository;
 import ru.itis.echpochmac.repository.CategoryRepository;
 import ru.itis.echpochmac.repository.DishRepository;
+import ru.itis.echpochmac.service.impl.CafeService;
+import ru.itis.echpochmac.service.impl.DishService;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -36,23 +38,22 @@ public class DishController {
 //        return modelAndView;
 //    }
 
-    @Autowired
-    DishRepository dishRepository;
+    private final DishService dishService;
 
     @Autowired
-    CafeRepository cafeRepository;
+    public DishController(DishService dishService) {
+        this.dishService = dishService;
+    }
 
-    @Autowired
-    CategoryRepository categoryRepository;
 
     @PostMapping("/addDishes")
-    public ResponseEntity<?> addDish(@RequestBody DishPayLoad dishPayLoad){
+    public ResponseEntity<?> addDish(@RequestBody DishPayLoad dishPayLoad) {
 
 
         //Create Dish
         Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
 
-        Dish result = dishRepository.save(dish);
+        Dish result = dishService.save(dish);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/dishes/{add}")

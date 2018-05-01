@@ -11,20 +11,25 @@ import ru.itis.echpochmac.model.Cafe;
 import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.CafePayLoad;
 import ru.itis.echpochmac.repository.CafeRepository;
+import ru.itis.echpochmac.service.impl.CafeService;
 
 import java.net.URI;
 
 @Controller
 @RequestMapping("/cafes")
 public class CafeController {
+    private final CafeService cafeService;
+
     @Autowired
-    CafeRepository cafeRepository;
+    public CafeController(CafeService cafeService) {
+        this.cafeService = cafeService;
+    }
 
     @PostMapping("/addCafes")
     public ResponseEntity<?> addCafe(@RequestBody CafePayLoad cafePayLoad){
 
         Cafe cafe = new Cafe( cafePayLoad.getName(), cafePayLoad.getDescription(), cafePayLoad.getImg());
-        Cafe result = cafeRepository.save(cafe);
+        Cafe result = cafeService.save(cafe);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/cafe/{add}")

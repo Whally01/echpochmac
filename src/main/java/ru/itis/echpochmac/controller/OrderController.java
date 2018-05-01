@@ -11,6 +11,7 @@ import ru.itis.echpochmac.model.Order;
 import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.OrderPayLoad;
 import ru.itis.echpochmac.repository.OrderRepository;
+import ru.itis.echpochmac.service.impl.OrderService;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -18,14 +19,18 @@ import java.net.URI;
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
+    private final OrderService orderService;
+
     @Autowired
-    OrderRepository orderRepository;
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @PostMapping("/addOrder")
     public ResponseEntity<?> addOrder(@Valid @RequestBody OrderPayLoad orderPayLoad){
         Order order = new Order(orderPayLoad.getQuantity(), orderPayLoad.getPriceOrder(),
                 orderPayLoad.getComment(), orderPayLoad.getDestinationAddress());
-        Order result = orderRepository.save(order);
+        Order result = orderService.save(order);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/orders/{add}")

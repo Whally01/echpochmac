@@ -11,19 +11,25 @@ import ru.itis.echpochmac.model.Category;
 import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.CategoryPayLoad;
 import ru.itis.echpochmac.repository.CategoryRepository;
+import ru.itis.echpochmac.service.impl.CafeService;
+import ru.itis.echpochmac.service.impl.CategoryService;
 
 import java.net.URI;
 
 @Controller
 @RequestMapping("/categories")
 public class CategoryController {
+    private final CategoryService categoryService;
+
     @Autowired
-    CategoryRepository categoryRepository;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @PostMapping("/addCategory")
     public ResponseEntity<?> addCategory(@RequestBody CategoryPayLoad categoryPayLoad){
         Category category = new Category(categoryPayLoad.getName(), categoryPayLoad.getImg());
-        Category result = categoryRepository.save(category);
+        Category result = categoryService.save(category);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/category/{add}")
