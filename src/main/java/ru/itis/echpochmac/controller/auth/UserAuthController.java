@@ -18,8 +18,6 @@ import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.JwtAuthenticationResponse;
 import ru.itis.echpochmac.payload.LoginRequest;
 import ru.itis.echpochmac.payload.SignUpRequest;
-import ru.itis.echpochmac.repository.RoleRepository;
-import ru.itis.echpochmac.repository.UserRepository;
 import ru.itis.echpochmac.security.JwtTokenProvider;
 import ru.itis.echpochmac.service.impl.RoleService;
 import ru.itis.echpochmac.service.impl.UserService;
@@ -73,13 +71,13 @@ public class UserAuthController {
                     HttpStatus.BAD_REQUEST);
         }
 
-        if (userService.existsByPhone(signUpRequest.getPhone_number())) {
+        if (userService.existsByPhone(signUpRequest.getPhone())) {
             return new ResponseEntity<>(new ApiResponse(false, "Phone number already in use!"),
                     HttpStatus.BAD_REQUEST);
         }
 
         User user = new User(signUpRequest.getFirstname(), signUpRequest.getLastname(), signUpRequest.getLogin(),
-                signUpRequest.getPhone_number(), signUpRequest.getPassword());
+                signUpRequest.getPhone(), signUpRequest.getPassword());
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 

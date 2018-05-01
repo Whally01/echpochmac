@@ -19,7 +19,7 @@ public class SignUpRequest {
 
     @NotBlank
     @Size(max = 11)
-    private String phone_number;
+    private String phone;
 
     @NotBlank
     @Size(min = 6, max = 20)
@@ -41,12 +41,12 @@ public class SignUpRequest {
         this.login = login;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {

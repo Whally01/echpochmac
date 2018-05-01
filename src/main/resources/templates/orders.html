@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <script data-require="jquery@1.10.0" data-semver="1.10.0"
+            src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/orders-styles.css">
+</head>
+<body>
+<section class="header">
+    <div class="header-wrapper">
+        <a href="home" class="title">
+            echpochmak
+        </a>
+        <img class="manager-picture" src="img/user.png">
+        <p class="manager-name">
+            Порфильева Анастасия
+        </p>
+    </div>
+    <div class="navigation">
+        <ul>
+            <li><a href="./orders.html">Заказы</a></li>
+            <li><a href="couriers.html">Курьеры</a></li>
+            <li><a href="./reports.html">Отчеты</a></li>
+            <li><a href="./archive.html">Архив</a></li>
+            <li><a href="./clients.html">Пользователи</a></li>
+            <li><a href="./cafe.html">Кафе</a></li>
+        </ul>
+    </div>
+</section>
+<section class="main">
+    <div class="clearfix">
+        <ul>
+            <li><a href="#">Новые 4</a></li>
+            <li><a href="#">В обработке 4</a></li>
+        </ul>
+        <form name="search" class="search">
+            <input type="submit" value="Искать" class="search-button">
+            <label><input type="text" name="search" placeholder="Поиск..."></label>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="col-md-3" data-toggle="modal" data-target="#view-item">
+            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="client">
+                <img src="img/user.png">
+                <span>Константин Константинопольский</span>
+            </div>
+            <div class="description">
+                <h3 class="cafe-name">Ханума</h3>
+                <span class="dishes-type">Кавказская, ланчи, халяль</span>
+                <span class="dishes-number">12 блюд</span>
+                <span class="dishes-price">460₽</span>
+            </div>
+        </div>
+        <div class="col-md-3" data-toggle="modal" data-target="#view-item">
+            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="client">
+                <img src="img/user.png">
+                <span>Ильнур Ядгаров</span>
+            </div>
+            <div class="description">
+                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
+                <span class="dishes-number">9 блюд</span>
+                <span class="dishes-type">Кавказская, ланчи, халяль</span>
+                <span class="dishes-price">2,460₽</span>
+            </div>
+        </div>
+        <div class="col-md-3" data-toggle="modal" data-target="#add-item">
+            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="add-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="dish-description">
+                    <label>Название блюда</label>
+                    <input type="text" placeholder="Картофельное пюре">
+                    <label>Описание</label>
+                    <input type="text" placeholder="Ароматный картофель в сочетании с молоком и маслом">
+                    <label>Цена</label>
+                    <input class="price" type="number" placeholder="58 Р">
+                    <input class="load" type="file" name="photo" multiple accept="image/*,image/jpeg">
+                    <button type="button">Добавить блюдо</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header clearfix">
+                <div class="cafe-picture">
+                    <img src="img/cafe-picture.png">
+                </div>
+                <div class="client">
+                    <img src="img/user.png">
+                    <span>Ильнур Ядгаров</span>
+                </div>
+                <div class="description clearfix">
+                    <h3 class="cafe-name">В гостях у дяди Ашота</h3>
+                    <span class="dishes-data">24.04.2018</span>
+                    <span class="dishes-type">Кавказская, ланчи, халяль</span>
+                    <span class="dishes-price">2,460₽</span>
+                </div>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="courier">
+                    <img src="img/user.png">
+                    <span>Ильнур Ядгаров</span>
+                </div>
+                <div class="order clearfix">
+                    <div>
+                        <img src="img/like.png" class="like">
+                        <span>Гороховый суп</span>
+                        <span>100Р</span>
+                    </div>
+                    <div>
+                        <span class="not-rated">нет</span>
+                        <span>Гороховый суп</span>
+                        <span>100Р</span>
+                    </div>
+                    <div>
+                        <img src="img/dislike.png" class="dislike">
+                        <span>Гороховый суп</span>
+                        <span>100Р</span>
+                    </div>
+                    <div class="sum">
+                        <span>300Р</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer clearfix">
+                <img src="img/facebook-places.png">
+                <span>г.Казань, Кремлевская 25</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

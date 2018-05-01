@@ -7,6 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import ru.itis.echpochmac.security.JwtTokenProvider;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(name = "/admin/auth")
+@RequestMapping("/admin")
 public class AdminAuthController {
     private final AuthenticationManager authenticationManager;
 
@@ -27,6 +28,11 @@ public class AdminAuthController {
     public AdminAuthController(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
         this.authenticationManager = authenticationManager;
         this.tokenProvider = tokenProvider;
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
     @PostMapping("/signin")

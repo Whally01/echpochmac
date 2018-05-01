@@ -1,0 +1,40 @@
+
+
+.main .container .description .cafe-name {
+    width: 180px;
+    margin-top: 0;
+    font-size: 1.6vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.main .container .description .dishes-type {
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.87);
+    float: left;
+}
+
+.main .container .description .dishes-number {
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ffffff;
+    float: right;
+}
+

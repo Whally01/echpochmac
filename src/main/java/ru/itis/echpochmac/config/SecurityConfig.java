@@ -67,21 +67,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests().antMatchers("/",
-                        "/favicon.ico",
-                        "/**/*.png",
-                        "/**/*.gif",
-                        "/**/*.svg",
-                        "/**/*.jpg",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js").permitAll()
+                "/favicon.ico",
+                "/**/*.png",
+                "/**/*.gif",
+                "/**/*.svg",
+                "/**/*.jpg",
+                "/**/*.html",
+                "/**/*.css",
+                "/**/*.js").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                //.antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/login").permitAll()
 //                .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
                 .antMatchers("/dishes/addDishes/**").permitAll()
                 .antMatchers("/cafes/addCafes/**").permitAll()
                 .antMatchers("/categories/addCategory/**").permitAll()
                 .antMatchers("/orders/addOrder/**").permitAll()
+                .antMatchers("/couriers").permitAll()
+                .antMatchers("/orders").hasRole("ADMIN")
+                .antMatchers("/cafes").permitAll()
                 .anyRequest().authenticated();
 
         // Add our custom JWT security filter

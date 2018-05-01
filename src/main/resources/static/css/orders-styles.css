@@ -1,0 +1,300 @@
+.main .container .description {
+    bottom: 7%;
+}
+
+.main .container .client {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    right: 5%;
+}
+
+.main .container .courier {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    right: 5%;
+}
+
+.main .container .client img {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    opacity: 1;
+}
+
+.main .container .courier img {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    opacity: 1;
+}
+
+.main .container .client span {
+    font-size: 0.7vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.main .container .description .cafe-name {
+    width: 65%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.6vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.main .container .description .dishes-type {
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.87);
+    float: left;
+    margin-top: 2%;
+}
+
+.main .container .description .dishes-number {
+    position: absolute;
+    bottom: 32px;
+    left: 80%;
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ffffff;
+}
+
+.main .container .description .dishes-price {
+    font-size: 1.6vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ffffff;
+    float: right;
+}
+
+/*Modal*/
+
+.modal-dialog {
+    width: 460px;
+}
+
+.modal-header .cafe-picture {
+    width: 460px;
+    height: 230px;
+    overflow: hidden;
+    background: black;
+    z-index: -111;
+}
+
+.modal-header .cafe-picture img {
+    z-index: 1;
+    opacity: 0.6;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+}
+
+.modal-header .client {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    right: 5%
+}
+
+.modal-header .client img {
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    opacity: 1;
+}
+
+.modal-header .client span {
+    font-size: 0.8vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.modal-header .description {
+    position: absolute;
+    bottom: 55%;
+    left: 5%;
+    right: 5%;
+}
+
+.modal-header .description .cafe-name {
+    width: 65%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.6vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.modal-header .description .dishes-type {
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.87);
+    float: left;
+    margin-top: 1%;
+}
+
+.modal-header .description .dishes-data {
+    position: absolute;
+    bottom: 110px;
+    left: 0;
+    font-size: 0.9vw;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.modal-header .description .dishes-price {
+    font-size: 1.6vw;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: #ffffff;
+    float: right;
+}
+
+.modal-footer {
+    height: 56px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-top: none;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 28px;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.54);
+    margin: 0 auto;
+    width: 458px;
+    padding-left: 30px;
+}
+
+.modal-body .order {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.modal-body .order span {
+    float: none;
+}
+
+.modal-body .order img {
+    margin-right: 10px;
+}
+
+.modal-body .courier {
+    margin: 0 auto;
+    width: 458px;
+    height: 58px;
+    background-color: #f9f9f9;
+    padding-top: 15px;
+    padding-left: 25px;
+}
+
+.modal-body .courier img {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    opacity: 1;
+}
+
+.modal-body .courier span {
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.modal-body div {
+    margin-bottom: 10px;
+}
+
+.modal-body .order span:last-child {
+    float: right;
+}
+
+.modal-body .order div:last-child {
+    margin-left: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);;
+}
+
+.modal-body .order div:last-child span {
+    font-weight: 600;
+}
+
+.modal-body .not-rated span {
+    margin-left: 20px;
+}
+
+.modal-body .not-rated {
+    margin-right: 12px;
+    font-size: 9px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #dfdfdf;
+}
+
