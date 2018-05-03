@@ -3,8 +3,6 @@ package ru.itis.echpochmac.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -75,20 +73,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/**/*.html",
                 "/**/*.css",
                 "/**/*.js").permitAll()
-                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/v1/signin", "/api/v1/signup").permitAll()
+                .antMatchers("/admin/signin").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/admin/login").permitAll()
-//                .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
-                .antMatchers("/dishes/addDishes/**").permitAll()
-                .antMatchers("/cafes/addCafes/**").permitAll()
-                .antMatchers("/categories/addCategory/**").permitAll()
-                .antMatchers("/orders/addOrder/**").permitAll()
-                .antMatchers("/couriers").permitAll()
-                .antMatchers("/orders").hasRole("ADMIN")
-                .antMatchers("/cafes").permitAll()
+                .antMatchers("/couriers/**", "/orders/**", "/cafes/**", "/clients/**").authenticated()
+                // .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
+                 //.antMatchers("/api/v1/**").hasAnyRole("COURIER", "ORDERER")
                 .anyRequest().authenticated();
 
-        // Add our custom JWT security filter
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }

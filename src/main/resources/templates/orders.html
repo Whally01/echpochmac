@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Заказы</title>
@@ -19,8 +20,8 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/orders-styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/orders-styles.css">
 </head>
 <body>
 <section class="header">
@@ -28,19 +29,19 @@
         <a href="home" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="img/user.png">
-        <p class="manager-name">
-            Порфильева Анастасия
+        <img class="manager-picture" src="/img/user.png">
+        <p class="manager-name" >
+            No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="./orders.html">Заказы</a></li>
-            <li><a href="couriers.html">Курьеры</a></li>
-            <li><a href="./reports.html">Отчеты</a></li>
-            <li><a href="./archive.html">Архив</a></li>
-            <li><a href="./clients.html">Пользователи</a></li>
-            <li><a href="./cafe.html">Кафе</a></li>
+            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/couriers/0">Курьеры</a></li>
+            <li><a href="/reports">Отчеты</a></li>
+            <li><a href="/archive">Архив</a></li>
+            <li><a href="/clients/0">Пользователи</a></li>
+            <li><a href="/cafes">Кафе</a></li>
         </ul>
     </div>
 </section>
@@ -57,17 +58,17 @@
     </div>
 
     <div class="container">
-        <div class="col-md-3" data-toggle="modal" data-target="#view-item">
+        <div class="col-md-3" data-toggle="modal" data-target="#view-item" th:each="order:${orders}">
             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
             <div class="client">
                 <img src="img/user.png">
-                <span>Константин Константинопольский</span>
+                <span th:text="${order.user.getFirstname()}+' '+${order.user.lastname}">Not Found</span>
             </div>
             <div class="description">
                 <h3 class="cafe-name">Ханума</h3>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-number">12 блюд</span>
-                <span class="dishes-price">460₽</span>
+                <span class="dishes-type" th:text="${order.dishes.}">Кавказская, ланчи, халяль</span>
+                <span class="dishes-number" th:text="${order.quantity}">12 блюд</span>
+                <span class="dishes-price" th:text="${order.priceOrder}"></span>
             </div>
         </div>
         <div class="col-md-3" data-toggle="modal" data-target="#view-item">
@@ -112,7 +113,7 @@
 
 <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content" >
             <div class="modal-header clearfix">
                 <div class="cafe-picture">
                     <img src="img/cafe-picture.png">
@@ -156,7 +157,7 @@
             </div>
             <div class="modal-footer clearfix">
                 <img src="img/facebook-places.png">
-                <span>г.Казань, Кремлевская 25</span>
+                <span th:text="${order.destinationAddress}"></span>
             </div>
         </div>
     </div>

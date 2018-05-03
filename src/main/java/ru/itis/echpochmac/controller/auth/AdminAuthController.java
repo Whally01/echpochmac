@@ -30,9 +30,9 @@ public class AdminAuthController {
         this.tokenProvider = tokenProvider;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/signin")
     public String login() {
-        return "login";
+        return "signin";
     }
 
     @PostMapping("/signin")

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Кафе</title>
@@ -37,12 +39,12 @@
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="./orders.html">Заказы</a></li>
-            <li><a href="couriers.html">Курьеры</a></li>
-            <li><a href="./reports.html">Отчеты</a></li>
-            <li><a href="./archive.html">Архив</a></li>
-            <li><a href="./clients.html">Пользователи</a></li>
-            <li><a href="./cafe.html">Кафе</a></li>
+            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/couriers/0">Курьеры</a></li>
+            <li><a href="/reports">Отчеты</a></li>
+            <li><a href="/archive">Архив</a></li>
+            <li><a href="/clients/0">Пользователи</a></li>
+            <li><a href="/cafes">Кафе</a></li>
         </ul>
     </div>
 </section>
@@ -54,39 +56,39 @@
         </form>
     </div>
 
-    <div class="container">
-        <div class="col-md-3">
+    <div class="container" >
+        <div class="col-md-3" th:each="cafe:${cafes}">
             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
             <div class="description">
-                <h3 class="cafe-name">Ханума</h3>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-number">12 блюд</span>
+                <h3 class="cafe-name" th:text="${cafe.name}"></h3>
+                    <span class="dishes-type" th:text="${cafe.description}"></span>
+                    <span class="dishes-number" th:text="${cafe.dishes.size()}"></span>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="description">
-                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-number">9 блюд</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="description">
-                <h3 class="cafe-name">Макдоналдс</h3>
-                <span class="dishes-type">Фаст-фуд, напитки</span>
-                <span class="dishes-number">20 блюд</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="description">
-                <h3 class="cafe-name">Сушилар</h3>
-                <span class="dishes-type">Японская кухня, пицца</span>
-                <span class="dishes-number">15 блюд</span>
-            </div>
-        </div>
+        <!-- <div class="col-md-3">
+             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+             <div class="description">
+                 <h3 class="cafe-name">В гостях у дяди Ашота</h3>
+                 <span class="dishes-type">Кавказская, ланчи, халяль</span>
+                 <span class="dishes-number">9 блюд</span>
+             </div>
+         </div>
+         <div class="col-md-3">
+             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+             <div class="description">
+                 <h3 class="cafe-name">Макдоналдс</h3>
+                 <span class="dishes-type">Фаст-фуд, напитки</span>
+                 <span class="dishes-number">20 блюд</span>
+             </div>
+         </div>
+         <div class="col-md-3">
+             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+             <div class="description">
+                 <h3 class="cafe-name">Сушилар</h3>
+                 <span class="dishes-type">Японская кухня, пицца</span>
+                 <span class="dishes-number">15 блюд</span>
+             </div>
+         </div>-->
         <div class="col-md-3">
             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
         </div>

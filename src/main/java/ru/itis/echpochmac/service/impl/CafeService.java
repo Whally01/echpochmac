@@ -6,12 +6,17 @@ import ru.itis.echpochmac.model.Cafe;
 import ru.itis.echpochmac.repository.CafeRepository;
 import ru.itis.echpochmac.service.ICafeService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CafeService implements ICafeService {
+    private final CafeRepository cafeRepository;
+
     @Autowired
-    private CafeRepository cafeRepository;
+    public CafeService(CafeRepository cafeRepository) {
+        this.cafeRepository = cafeRepository;
+    }
 
     @Override
     public Optional<Cafe> findCafeByName(String name) {
@@ -21,5 +26,10 @@ public class CafeService implements ICafeService {
     @Override
     public Cafe save(Cafe cafe) {
         return cafeRepository.save(cafe);
+    }
+
+    @Override
+    public List<Cafe> findAll() {
+        return cafeRepository.findAll();
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long category_id;
+    private Long id;
 
     @NotBlank
     @Size(max = 40)
@@ -31,11 +31,11 @@ public class Category {
     }
 
     public Long getId() {
-        return category_id;
+        return id;
     }
 
-    public void setId(Long category_id) {
-        this.category_id = category_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

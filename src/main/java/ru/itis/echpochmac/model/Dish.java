@@ -35,8 +35,8 @@ public class Dish {
     @JoinColumn (name="cafe_id")
     private Cafe cafe;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "categoty_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

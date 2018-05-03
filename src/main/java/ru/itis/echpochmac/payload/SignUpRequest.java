@@ -4,24 +4,24 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class SignUpRequest {
-    @NotBlank
+    @NotBlank(message = "firstname can't empty!")
     @Size(min = 4, max = 40)
     private String firstname;
 
-    @NotBlank
+    @NotBlank(message = "lastname can't empty!")
     @Size(min = 4, max = 40)
     private String lastname;
 
 
-    @NotBlank
+    @NotBlank(message = "login can't empty!")
     @Size(min = 3, max = 15)
     private String login;
 
-    @NotBlank
-    @Size(max = 11)
+    @NotBlank(message = "phone can't empty!")
+    @Size(min = 11, max = 11)
     private String phone;
 
-    @NotBlank
+    @NotBlank(message = "password can't empty!")
     @Size(min = 6, max = 20)
     private String password;
 

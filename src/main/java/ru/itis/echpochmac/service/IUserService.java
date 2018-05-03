@@ -1,11 +1,16 @@
 package ru.itis.echpochmac.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import ru.itis.echpochmac.model.RoleName;
 import ru.itis.echpochmac.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface IUserService {
+
+    Page<User> findAll(int page);
 
     Optional<User> findByPhone(String phone_number);
 
@@ -24,5 +29,7 @@ public interface IUserService {
     void delete(long id);
 
     User save(User user);
+
+    User update(User user);
 
 }

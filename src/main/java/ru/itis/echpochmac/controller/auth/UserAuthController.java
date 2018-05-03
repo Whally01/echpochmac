@@ -1,5 +1,7 @@
 package ru.itis.echpochmac.controller.auth;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +10,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import ru.itis.echpochmac.controller.URLs;
 import ru.itis.echpochmac.exception.AppException;
 import ru.itis.echpochmac.model.Role;
 import ru.itis.echpochmac.model.RoleName;
@@ -27,8 +31,10 @@ import java.net.URI;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(URLs.API)
 public class UserAuthController {
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     private final AuthenticationManager authenticationManager;
 
     private final RoleService roleService;
@@ -48,8 +54,12 @@ public class UserAuthController {
         this.tokenProvider = tokenProvider;
     }
 
-    @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    @PostMapping(URLs.SIGNIN)
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            logger.info("BindinErrors: ", bindingResult.getAllErrors());
+            return new ResponseEntity<>(new ApiResponse(false, "Errors"), HttpStatus.BAD_REQUEST);
+        }
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -57,14 +67,13 @@ public class UserAuthController {
                         loginRequest.getPassword()
                 )
         );
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = tokenProvider.generateToken(authentication);
         return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
     }
 
-    @PostMapping("/signup")
+    @PostMapping(URLs.SIGNUP)
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         if (userService.existsByLogin(signUpRequest.getLogin())) {
             return new ResponseEntity<>(new ApiResponse(false, "Login is already taken!"),
@@ -93,11 +102,5 @@ public class UserAuthController {
                 .buildAndExpand(result.getLogin()).toUri();
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
-    }
-
-    @GetMapping("/set_role_courier")
-    public ResponseEntity.BodyBuilder setRoleCourier() {
-
-        return ResponseEntity.ok();
     }
 }

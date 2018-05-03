@@ -3,7 +3,6 @@ package ru.itis.echpochmac.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -11,7 +10,7 @@ import java.util.Set;
 public class Cafe {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long cafe_id;
+    private Long id;
 
     @NotBlank
     @Size(max = 40)
@@ -37,11 +36,11 @@ public class Cafe {
     }
 
     public Long getId() {
-        return cafe_id;
+        return id;
     }
 
-    public void setId(Long cafe_id) {
-        this.cafe_id = cafe_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

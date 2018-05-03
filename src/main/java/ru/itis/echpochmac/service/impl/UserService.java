@@ -1,7 +1,12 @@
 package ru.itis.echpochmac.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ru.itis.echpochmac.model.RoleName;
 import ru.itis.echpochmac.model.User;
 import ru.itis.echpochmac.repository.UserRepository;
 import ru.itis.echpochmac.service.IUserService;
@@ -20,12 +25,22 @@ public class UserService implements IUserService {
 
     @Override
     public void delete(long id) {
-    userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User update(User user) {
+        return userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public Page<User> findAll(int page) {
+        return userRepository.findAll(PageRequest.of(page, 20));
     }
 
     @Override

@@ -1,8 +1,10 @@
 package ru.itis.echpochmac.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,7 @@ public class OrderController {
     }
 
     @PostMapping("/addOrder")
+    @ApiOperation(value = "Создание заказа")
     public ResponseEntity<?> addOrder(@Valid @RequestBody OrderPayLoad orderPayLoad){
         Order order = new Order(orderPayLoad.getQuantity(), orderPayLoad.getPriceOrder(),
                 orderPayLoad.getComment(), orderPayLoad.getDestinationAddress());
@@ -40,7 +43,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public String orders() {
+    public String orders(Model model) {
+        model.addAttribute("orders", orderService.findAll());
         return "orders";
     }
 }

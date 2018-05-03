@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Архив</title>
@@ -21,9 +22,9 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/orders-styles.css">
-    <link rel="stylesheet" href="css/archive-styles.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/orders-styles.css">
+    <link rel="stylesheet" href="../css/archive-styles.css">
 </head>
 <body>
 <section class="header">
@@ -31,19 +32,19 @@
         <a href="home" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="img/user.png">
+        <img class="manager-picture" src="../img/user.png">
         <p class="manager-name">
             Порфильева Анастасия
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="./orders.html">Заказы</a></li>
-            <li><a href="couriers.html">Курьеры</a></li>
-            <li><a href="./reports.html">Отчеты</a></li>
-            <li><a href="./archive.html">Архив</a></li>
-            <li><a href="./clients.html">Пользователи</a></li>
-            <li><a href="./cafe.html">Кафе</a></li>
+            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/couriers">Курьеры</a></li>
+            <li><a href="/reports">Отчеты</a></li>
+            <li><a href="/archive">Архив</a></li>
+            <li><a href="/clients">Пользователи</a></li>
+            <li><a href="/cafes">Кафе</a></li>
         </ul>
     </div>
 </section>
@@ -61,12 +62,12 @@
         <div class="col-md-3">
             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
             <div class="client">
-                <img src="img/user.png">
+                <img src="../img/user.png">
                 <h4>Заказчик</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="courier">
-                <img src="img/user.png">
+                <img src="../img/user.png">
                 <h4>Курьер</h4>
                 <span>Константин Константинопольский</span>
             </div>

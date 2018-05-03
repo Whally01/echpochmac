@@ -3,10 +3,7 @@ package ru.itis.echpochmac.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.itis.echpochmac.exception.AppException;
@@ -48,16 +45,18 @@ public class DishController {
 
     @PostMapping("/addDishes")
     public ResponseEntity<?> addDish(@RequestBody DishPayLoad dishPayLoad) {
-
-
-        //Create Dish
         Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
-
         Dish result = dishService.save(dish);
-
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/dishes/{add}")
                 .buildAndExpand(result.getName()).toUri();
         return ResponseEntity.created(location).body(new ApiResponse(true, "Dish added successfully"));
+    }
+
+    @GetMapping(path = "/dishes")
+    @ResponseBody
+    public String getDishesByCafe(@RequestParam(name = "cafe_id") String cafeId) {
+        List<Dish> list = dishService.findDishesByCafeName(Long.valueOf(cafeId));
+        return list.toString();
     }
 }
