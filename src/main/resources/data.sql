@@ -8,19 +8,19 @@ INSERT INTO cafes (id,name, description, img) values (2,'Добрая Столо
 INSERT INTO cafes (id,name, description, img) values (3,'McDonalds', 'бургеры, газировки, ..', null );
 
 /*Добавляем супер-админа */
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (1, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Админ', 'Админов', 'admin', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89000000000');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Админ', 'Админов', 'admin', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89000000000');
 INSERT INTO user_role VALUES (1, 1);
 INSERT INTO user_role VALUES (1, 2);
 INSERT INTO user_role VALUES (1, 3);
 
 /*Тестовые данные пользователей*/
 
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (2, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Renat', 'Gayfutdinov', 'renat', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999998');
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (3, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Lenar', 'Gilyazov', 'lenar', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999997');
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (4, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Dinar', 'Raimov', 'dinar', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89270309497');
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (5, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Zara', 'Smile', 'zara', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999996');
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (6, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Курьер', '1', 'courier1', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999995');
-INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (7, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Курьер', '2', 'courier2', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999994');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Renat', 'Gayfutdinov', 'renat', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999998');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Lenar', 'Gilyazov', 'lenar', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999997');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Dinar', 'Raimov', 'dinar', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89270309497');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Zara', 'Smile', 'zara', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999996');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Курьер', '1', 'courier1', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999995');
+INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Курьер', '2', 'courier2', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89999999994');
 
 INSERT INTO user_role VALUES (2, 2);
 INSERT INTO user_role VALUES (3, 2);
