@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().cacheControl();
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
@@ -76,12 +77,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/signin", "/api/v1/signup").permitAll()
                 .antMatchers("/admin/signin").permitAll()
                 //.antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/couriers/**", "/orders/**", "/cafes/**", "/clients/**").authenticated()
-                // .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
-                 //.antMatchers("/api/v1/**").hasAnyRole("COURIER", "ORDERER")
+                .antMatchers("/couriers/**", "/orders/**", "/cafes/**", "/clients/**").hasRole("ADMIN")
+                .antMatchers("/api/v1/**").hasAnyRole("COURIER", "ORDERER")
                 .anyRequest().authenticated();
 
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }
