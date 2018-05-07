@@ -2,6 +2,7 @@ package ru.itis.echpochmac.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import ru.itis.echpochmac.model.Role;
 import ru.itis.echpochmac.model.RoleName;
 import ru.itis.echpochmac.model.User;
 
@@ -15,6 +16,8 @@ public interface IUserService {
     Optional<User> findByPhone(String phone_number);
 
     Optional<User> findByLoginOrPhone(String login, String phone_number);
+
+    Page<User> findUsersByRoles(Role role, Pageable pageable);
 
     List<User> findByIdIn(List<Long> userIds);
 

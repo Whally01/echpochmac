@@ -30,7 +30,7 @@ INSERT INTO user_role VALUES (6, 3);
 INSERT INTO user_role VALUES (7, 3);
 
 /*Заказы*/
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (1, 2, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (2, 3, 550, 5, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (3, 4, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (4, 5, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 2, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 3, 550, 5, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 4, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 5, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');

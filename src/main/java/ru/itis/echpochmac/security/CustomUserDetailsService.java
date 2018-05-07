@@ -2,14 +2,22 @@ package ru.itis.echpochmac.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.itis.echpochmac.exception.ResourceNotFoundException;
+import ru.itis.echpochmac.model.RoleName;
 import ru.itis.echpochmac.model.User;
 import ru.itis.echpochmac.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -23,7 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with login or phone_number : " + loginOrPhone)
                 );
-
         return UserPrincipal.create(user);
     }
 

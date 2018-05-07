@@ -18,6 +18,12 @@ public class RoleService implements IRoleService {
         this.roleRepository = roleRepository;
     }
 
+
+    @Override
+    public Optional<Role> getRole(int id) {
+        return this.roleRepository.getRoleById(id);
+    }
+
     @Override
     public Optional<Role> findByName(RoleName roleName) {
         return roleRepository.findByName(roleName);
