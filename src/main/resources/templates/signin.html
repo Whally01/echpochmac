@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизуйтесь</title>
+    <script data-require="jquery@1.10.0" data-semver="1.10.0"
+            src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="/css/authorization-styles.css">
+</head>
+<body background="/img/page0.png">
+<section class="clearfix">
+    <div>
+        <img src="/img/user.png">
+    </div>
+    <form action="#" th:action="@{/login}" th:object="${loginRequest}" method="post">
+        <h1>Админ Админов</h1>
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">
+                Invalid username and password.
+            </div>
+        </div>
+        <div th:if="${param.logout}">
+            <div class="alert alert-info">
+                You have been logged out.
+            </div>
+        </div>
+
+        <input type="text" placeholder="логин" th:field="*{loginOrPhone}">
+        <input type="password" placeholder="пароль"  th:field="*{password}">
+
+        <input type="submit" src="/img/arrow.png">
+        <label for="stay">Оставаться в системе</label>
+        <input type="checkbox" id="stay">
+
+    </form>
+</section>
+</body>
+</html>

@@ -7,13 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.itis.echpochmac.model.Cafe;
-import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.CafePayLoad;
 import ru.itis.echpochmac.service.impl.CafeService;
+import ru.itis.echpochmac.util.URLs;
 
-import java.net.URI;
 import java.util.List;
 
 @Controller
@@ -25,28 +23,13 @@ public class CafeController {
         this.cafeService = cafeService;
     }
 
-   /* @PostMapping("/addCafes")
-    public ResponseEntity<?> addCafe(@RequestBody CafePayLoad cafePayLoad){
+    @PostMapping("/addCafes")
+    public String addCafe(@RequestBody CafePayLoad cafePayLoad) {
 
-        Cafe cafe = new Cafe( cafePayLoad.getName(), cafePayLoad.getDescription(), cafePayLoad.getImg());
-        Cafe result = cafeService.save(cafe);
-
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/cafe/{add}")
-                .buildAndExpand(result.getName()).toUri();
-
-        return ResponseEntity.created(location).body(new ApiResponse(true, "Cafe added sucessufully"));
-    }*/
-
-    @PostMapping("/cafes/addCafes")
-    public ResponseEntity<ApiResponse> addCafe(@RequestBody CafePayLoad cafePayLoad) {
         Cafe cafe = new Cafe(cafePayLoad.getName(), cafePayLoad.getDescription(), cafePayLoad.getImg());
         Cafe result = cafeService.save(cafe);
 
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/cafes/{add}")
-                .buildAndExpand(result.getName()).toUri();
-        return ResponseEntity.created(location).body(new ApiResponse(true, "Cafe added successfully"));
+        return "cafe";
     }
 
     @GetMapping("/cafes")
@@ -57,12 +40,7 @@ public class CafeController {
 
     @GetMapping(URLs.API + URLs.CAFES)
     public ResponseEntity<?> cafes() {
-
         List<Cafe> result = cafeService.findAll();
-
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/cafes")
-                .buildAndExpand(result).toUri();
         return ResponseEntity.ok(result);
     }
 }

@@ -23,8 +23,9 @@ public class DishService implements IDishService {
         return dishRepository.save(dish);
     }
 
-    @Override
-    public List<Dish> findDishesByCafeName(Long id) {
-        return dishRepository.findByCafeId(id);
-    }
+    /*@Override
+    public List<Dish> findDishesByCafe(Cafe cafe) {
+        return dishRepository.findDishesByCafe(cafe);
+    }*/
+
 }

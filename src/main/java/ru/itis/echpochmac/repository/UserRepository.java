@@ -1,11 +1,11 @@
 package ru.itis.echpochmac.repository;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.itis.echpochmac.model.Role;
-import ru.itis.echpochmac.model.RoleName;
 import ru.itis.echpochmac.model.User;
 
 import java.util.List;
@@ -21,7 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByIdIn(List<Long> userIds);
 
-    Optional<User> findById(Long userId);
+    @NotNull
+    Optional<User> findById(@NotNull Long userId);
 
     Optional<User> findByLogin(String login);
 

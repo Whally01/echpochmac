@@ -21,7 +21,7 @@ public interface IUserService {
 
     List<User> findByIdIn(List<Long> userIds);
 
-    Optional<User> findById(Long userId);
+    Optional<User> findById(String userId);
 
     Optional<User> findByLogin(String login);
 

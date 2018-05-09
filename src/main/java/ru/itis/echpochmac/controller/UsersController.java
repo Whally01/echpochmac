@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ru.itis.echpochmac.exception.AppException;
 import ru.itis.echpochmac.model.Role;
 import ru.itis.echpochmac.model.RoleName;
+import ru.itis.echpochmac.model.User;
 import ru.itis.echpochmac.service.impl.RoleService;
 import ru.itis.echpochmac.service.impl.UserService;
 
 import org.springframework.data.domain.Pageable;
+import ru.itis.echpochmac.util.URLs;
+
+import java.util.Optional;
 
 @Controller
 public class UsersController {
@@ -26,19 +30,33 @@ public class UsersController {
         this.roleService = roleService;
     }
 
-    @GetMapping("/couriers/{page}")
-    public String couriers(@PathVariable String page, Model model) {
+    @GetMapping(URLs.COURIERS + "/{page}")
+    public String getCouriers(@PathVariable String page, Model model) {
         Role userRole = roleService.findByName(RoleName.ROLE_COURIER)
                 .orElseThrow(() -> new AppException("User Role not set."));
         model.addAttribute("couriers", userService.findUsersByRoles(userRole, new PageRequest(Integer.parseInt(page), 50)));
         return "couriers";
     }
 
-    @GetMapping("/clients/{page}")
-    public String clients(@PathVariable String page, Model model) {
+    @GetMapping(URLs.CLIENTS + "/{page}")
+    public String getClients(@PathVariable String page, Model model) {
         Role userRole = roleService.findByName(RoleName.ROLE_ORDERER)
                 .orElseThrow(() -> new AppException("User Role not set."));
         model.addAttribute("clients", userService.findUsersByRoles(userRole, new PageRequest(Integer.parseInt(page), 50)));
         return "clients";
+    }
+
+    @GetMapping(URLs.COURIERS + URLs.COURIER + "/{id}")
+    public String getCourier(@PathVariable String id, Model model) {
+        Optional<User> courier = userService.findById(id);
+        model.addAttribute("courier", courier);
+        return "courier-profile";
+    }
+
+    @GetMapping(URLs.CLIENTS + URLs.CLIENT + "/{id}")
+    public String getClient(@PathVariable String id, Model model) {
+        Optional<User> client = userService.findById(id);
+        model.addAttribute("client", client);
+        return "client-profile";
     }
 }

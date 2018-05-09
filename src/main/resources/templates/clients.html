@@ -22,23 +22,23 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/users-styles.css">
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/users-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="home" class="title">
+        <a href="orders-processing.html" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="../img/user.png">
-        <p class="manager-name">
-            Порфильева Анастасия
+        <img class="manager-picture" src="/../img/user.png">
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+            No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/orders/new">Заказы</a></li>
             <li><a href="/couriers/0">Курьеры</a></li>
             <li><a href="/reports">Отчеты</a></li>
             <li><a href="/archive">Архив</a></li>
@@ -49,33 +49,26 @@
 </section>
 <section class="main">
     <div class="clearfix">
+        <ul>
+            <li><a href="#">Свободные</a></li>
+            <li><a href="#">Занятые</a></li>
+        </ul>
         <form name="search" class="search">
             <input type="submit" value="Искать" class="search-button">
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
     </div>
 
-    <div class="container" >
-        <div class="col-md-1" th:each="client: ${clients}">
+    <div class="container">
+        <a class="col-md-1" th:each="client:${clients}" th:href="@{/clients/client/{clientId}/(clientId=${client.id})}">
             <div class="courier-picture">
-                <img src="../img/user.png">
-            </div>
-
-            <div class="courier-name">
-                <span th:text="${client.firstname}+' '+${client.lastname}"></span>
-                <img src="../img/page-1.png">
-            </div>
-        </div>
-
-        <div class="col-md-1">
-            <div class="courier-picture">
-                <img src="../img/user.png">
+                <img src="/../img/user.png">
             </div>
             <div class="courier-name">
-                <span>Константин Константинопольский</span>
-                <img src="../img/page-1.png">
+                <span th:text="${client.firstname}+' '+${client.lastname}">Константин Константинопольский</span>
+                <img src="/../img/page-1.png">
             </div>
-        </div>
+        </a>
     </div>
 </section>
 </body>

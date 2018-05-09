@@ -65,22 +65,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests().antMatchers("/",
-                "/favicon.ico",
-                "/**/*.png",
-                "/**/*.gif",
-                "/**/*.svg",
-                "/**/*.jpg",
-                "/**/*.html",
-                "/**/*.css",
-                "/**/*.js").permitAll()
-                .antMatchers("/api/v1/signin", "/api/v1/signup").permitAll()
-                .antMatchers("/admin/signin").permitAll()
-                //.antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/cafes/**").hasRole("ADMIN")
-                .antMatchers("/couriers/**", "/orders/**", "/clients/**").authenticated()
-                // .antMatchers(HttpMethod.GET, "/api/dishes/**", "/api/users/**").permitAll()
-                 //.antMatchers("/api/v1/**").hasAnyRole("COURIER", "ORDERER")
+                .authorizeRequests()
+                //.antMatchers("/resources/**").permitAll()*/
+                .antMatchers("/*",
+                "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg",
+                "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
+                .antMatchers("/api/v1/login", "/api/v1/signup", "/login").permitAll()
+                .antMatchers("/couriers/**", "/orders/**", "/clients/**", "/cafes/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

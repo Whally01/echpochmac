@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Курьеры</title>
+    <title>Профиль клиента</title>
     <script data-require="jquery@1.10.0" data-semver="1.10.0"
             src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
 
@@ -23,12 +23,14 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/../css/main.css">
-    <link rel="stylesheet" href="/../css/users-styles.css">
+    <link rel="stylesheet" href="/../css/orders-styles.css">
+    <link rel="stylesheet" href="/../css/archive-styles.css">
+    <link rel="stylesheet" href="/../css/client-profile-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="orders-processing.html" class="title">
+        <a href="/orders/new" class="title">
             echpochmak
         </a>
         <img class="manager-picture" src="/img/user.png">
@@ -48,30 +50,46 @@
     </div>
 </section>
 <section class="main">
+    <div class="user-history clearfix">
+        <a href="/clients/0" class="return"><img src="/img/back.png"></a>
+        <img src="/img/user.png" class="user-picture">
+        <span th:text="${client.get().firstname}+' '+${client.get().lastname}">Имя Фамилия</span>
+    </div>
     <div class="clearfix">
         <ul>
-            <li><a href="#">Свободен 10</a></li>
-            <li><a href="#">Занят 3</a></li>
-            <li><a href="#">Все 13</a></li>
+            <li><a href="#">История</a></li>
+            <li><a href="#">Лайки</a></li>
+            <li><a href="#">Дизлайки</a></li>
+            <li><a href="#">Заблокированные курьеры</a></li>
         </ul>
-
         <form name="search" class="search">
             <input type="submit" value="Искать" class="search-button">
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
-        <a href="/requests/0" class="requests">Заявки <span class="number">10</span> </a>
     </div>
 
     <div class="container">
-        <a class="col-md-1"  th:each="courier:${couriers}" th:href="@{/couriers/courier/{courierId}/(courierId=${courier.id})}">
-            <div class="courier-picture">
+        <div class="col-md-3" th:each="order:${client.get().orders}">
+            <div class="cafe-picture"><img src="/img/cafe-picture.png"></div>
+            <div class="courier">
                 <img src="/img/user.png">
+                <h4>Курьер</h4>
+                <span><!--th:text="${order.user.firstname}"-->Константин Константинопольский</span>
             </div>
-            <div class="courier-name">
-                <span th:text="${courier.firstname}+' '+${courier.lastname}">Константин Константинопольский</span>
-                <img src="/img/page-1.png">
+            <div class="description" th:each="dish:${order.dishes}">
+                <h3 class="cafe-name" th:text="${dish.cafe.name}">В гостях у дяди Ашота</h3>
+                <span class="dishes-number" th:text="${dish.cafe.dishes.size()}">9 блюд</span>
+                <span class="dishes-type" th:text="${dish.cafe.description}">Кавказская, ланчи, халяль</span>
+                <span class="dishes-price" th:text="${dish.price}+'₽'">2,460₽</span>
             </div>
-        </a>
+            <div>
+                <img src="/img/like.png">
+                <span>12</span>
+                <img src="/img/dislike.png">
+                <span>4</span>
+                <span class="data">22.04.2018</span>
+            </div>
+        </div>
     </div>
 </section>
 </body>

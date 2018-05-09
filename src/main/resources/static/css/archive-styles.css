@@ -28,60 +28,26 @@
     margin-top: 10px;
 }
 
-.main .container .client h4 {
-    position: absolute;
-    left: 12%;
-    bottom: 45%;
-    text-transform: uppercase;
-    font-size: 7px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.14;
-    letter-spacing: 1px;
-    text-align: left;
-    color: rgba(255, 255, 255, 0.7);
+.main .courier-history {
+    float: left;
 }
 
-.main .container .courier h4 {
-    position: absolute;
-    left: 12%;
-    bottom: 45%;
-    text-transform: uppercase;
-    font-size: 7px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.14;
-    letter-spacing: 1px;
-    text-align: left;
-    color: rgba(255, 255, 255, 0.7);
+.main .courier-history .user-picture {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 6px;
 }
 
-.main .container .courier span {
-    position: absolute;
-    top: 50%;
-    left: 12%;
-    font-size: 0.7vw;
-    font-weight: 500;
+.main .courier-history span {
+    font-size: 18px;
+    font-weight: 600;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #ffffff;
-}
-
-.main .container .client span {
-    position: absolute;
-    top: 50%;
-    left: 12%;
-    font-size: 0.7vw;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #ffffff;
+    color: rgba(0, 0, 0, 0.87);
 }

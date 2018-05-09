@@ -7,6 +7,7 @@ import ru.itis.echpochmac.repository.OrderRepository;
 import ru.itis.echpochmac.service.IOrderService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService implements IOrderService {
@@ -25,6 +26,11 @@ public class OrderService implements IOrderService {
     @Override
     public List<Order> findAll() {
         return orderRepository.findAll();
+    }
+
+    @Override
+    public Order findOne(String id) {
+        return orderRepository.getOne(Long.parseLong(id));
     }
 
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <title>Кафе</title>
@@ -23,23 +22,23 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/cafe-styles.css">
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/cafe-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="home" class="title">
+        <a href="orders-processing.html" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="img/user.png">
-        <p class="manager-name">
-            Порфильева Анастасия
+        <img class="manager-picture" src="/../img/user.png">
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+            No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/orders/new">Заказы</a></li>
             <li><a href="/couriers/0">Курьеры</a></li>
             <li><a href="/reports">Отчеты</a></li>
             <li><a href="/archive">Архив</a></li>
@@ -58,40 +57,12 @@
 
     <div class="container" >
         <div class="col-md-3" th:each="cafe:${cafes}">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="cafe-picture"><img src="/../img/cafe-picture.png"></div>
             <div class="description">
                 <h3 class="cafe-name" th:text="${cafe.name}"></h3>
-                    <span class="dishes-type" th:text="${cafe.description}"></span>
-                    <span class="dishes-number" th:text="${cafe.dishes.size()}"></span>
+                <span class="dishes-type" th:text="${cafe.description}"></span>
+                <span class="dishes-number" th:text="${cafe.dishes.size()}"></span>
             </div>
-        </div>
-        <!-- <div class="col-md-3">
-             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-             <div class="description">
-                 <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                 <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                 <span class="dishes-number">9 блюд</span>
-             </div>
-         </div>
-         <div class="col-md-3">
-             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-             <div class="description">
-                 <h3 class="cafe-name">Макдоналдс</h3>
-                 <span class="dishes-type">Фаст-фуд, напитки</span>
-                 <span class="dishes-number">20 блюд</span>
-             </div>
-         </div>
-         <div class="col-md-3">
-             <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-             <div class="description">
-                 <h3 class="cafe-name">Сушилар</h3>
-                 <span class="dishes-type">Японская кухня, пицца</span>
-                 <span class="dishes-number">15 блюд</span>
-             </div>
-         </div>-->
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-        </div>
     </div>
 </section>
 </body>

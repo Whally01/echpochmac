@@ -10,8 +10,8 @@ INSERT INTO cafes (id, name, description, img) values (DEFAULT, 'McDonalds', 'б
 /*Добавляем супер-админа */
 INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Админ', 'Админов', 'admin', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89000000000');
 INSERT INTO user_role VALUES (1, 1);
-INSERT INTO user_role VALUES (1, 2);
-INSERT INTO user_role VALUES (1, 3);
+/*INSERT INTO user_role VALUES (1, 2);
+INSERT INTO user_role VALUES (1, 3);*/
 
 /*Тестовые данные пользователей*/
 
@@ -31,6 +31,6 @@ INSERT INTO user_role VALUES (7, 3);
 
 /*Заказы*/
 INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 2, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 3, 550, 5, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 4, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
-INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment) VALUES (DEFAULT, 5, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment, status) VALUES (DEFAULT, 3, 550, 5, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!', 'PROCESSING');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment, status) VALUES (DEFAULT, 4, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!', 'DELIVERED');
+INSERT INTO orders (id, user_id, price_order, quantity, destination_address, comment, status) VALUES (DEFAULT, 5, 350, 3, 'Кремлевская, 35', 'Буду на паре, оставьте на вахте!', 'DELIVERED');

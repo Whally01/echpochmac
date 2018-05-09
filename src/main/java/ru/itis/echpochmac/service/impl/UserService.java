@@ -67,8 +67,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<User> findById(Long userId) {
-        return userRepository.findById(userId);
+    public Optional<User> findById(String  userId) {
+        return userRepository.findById(Long.parseLong(userId));
     }
 
     @Override

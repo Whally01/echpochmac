@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+    <script data-require="jquery@1.10.0" data-semver="1.10.0"
+            src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/users-styles.css">
+</head>
+<body>
+<section class="header">
+    <div class="header-wrapper">
+        <a href="orders-processing.html" class="title">
+            echpochmak
+        </a>
+        <img class="manager-picture" src="../static/img/user.png">
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+            No Name
+        </p>
+    </div>
+    <div class="navigation">
+        <ul>
+            <li><a href="/orders/new">Заказы</a></li>
+            <li><a href="/couriers/0">Курьеры</a></li>
+            <li><a href="/reports">Отчеты</a></li>
+            <li><a href="/archive">Архив</a></li>
+            <li><a href="/clients/0">Пользователи</a></li>
+            <li><a href="/cafes">Кафе</a></li>
+        </ul>
+    </div>
+</section>
+<section class="main">
+    <div class="clearfix">
+        <ul>
+            <li><a href="#">Свободные</a></li>
+            <li><a href="#">Занятые</a></li>
+        </ul>
+        <form name="search" class="search">
+            <input type="submit" value="Искать" class="search-button">
+            <label><input type="text" name="search" placeholder="Поиск..."></label>
+        </form>
+
+    </div>
+
+    <div class="container">
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+        <a class="col-md-1" href="client-profile.html">
+            <div class="courier-picture">
+                <img src="../static/img/user.png">
+            </div>
+            <div class="courier-name">
+                <span>Константин Константинопольский</span>
+                <img src="../static/img/page-1.png">
+            </div>
+        </a>
+    </div>
+</section>
+</body>
+</html>

@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.itis.echpochmac.controller.URLs;
+import ru.itis.echpochmac.util.URLs;
 import ru.itis.echpochmac.exception.AppException;
 import ru.itis.echpochmac.model.Role;
 import ru.itis.echpochmac.model.RoleName;
@@ -54,7 +54,7 @@ public class UserAuthController {
         this.tokenProvider = tokenProvider;
     }
 
-    @PostMapping(URLs.SIGNIN)
+    @PostMapping(URLs.LOGIN)
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             logger.info("BindinErrors: ", bindingResult.getAllErrors());

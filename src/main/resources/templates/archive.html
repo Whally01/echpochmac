@@ -22,28 +22,28 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/orders-styles.css">
-    <link rel="stylesheet" href="../css/archive-styles.css">
+    <link rel="stylesheet" href="/../css/main.css">
+    <link rel="stylesheet" href="/../css/orders-styles.css">
+    <link rel="stylesheet" href="/../css/archive-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="home" class="title">
+        <a href="orders-processing.html" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="../img/user.png">
-        <p class="manager-name">
-            Порфильева Анастасия
+        <img class="manager-picture" src="../static/img/user.png">
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+            No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders">Заказы</a></li>
-            <li><a href="/couriers">Курьеры</a></li>
+            <li><a href="/orders/new">Заказы</a></li>
+            <li><a href="/couriers/0">Курьеры</a></li>
             <li><a href="/reports">Отчеты</a></li>
             <li><a href="/archive">Архив</a></li>
-            <li><a href="/clients">Пользователи</a></li>
+            <li><a href="/clients/0">Пользователи</a></li>
             <li><a href="/cafes">Кафе</a></li>
         </ul>
     </div>
@@ -60,99 +60,44 @@
     <span class="data">23.04.2018</span>
     <div class="container">
         <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="cafe-picture"><img src="/../img/cafe-picture.png"></div>
             <div class="client">
-                <img src="../img/user.png">
+                <img src="/../img/user.png">
                 <h4>Заказчик</h4>
-                <span>Константин Константинопольский</span>
+                <span th:text="${order.user.firstname}">Константин Константинопольский</span>
             </div>
             <div class="courier">
-                <img src="../img/user.png">
+                <img src="/../img/user.png">
                 <h4>Курьер</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="description">
-                <h3 class="cafe-name">Ханума</h3>
+                <img src="/../img/cancel.png"><span class="order-status">Заказ не выполнен</span>
+                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
+                <span class="dishes-number">9 блюд</span>
                 <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-number">12 блюд</span>
-                <span class="dishes-price">460₽</span>
+                <span class="dishes-price">2,460₽</span>
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="client">
-                <img src="img/user.png">
-                <h4>Заказчик</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="courier">
-                <img src="img/user.png">
-                <h4>Курьер</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="description">
-                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                <span class="dishes-number">9 блюд</span>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-price">2,460₽</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="client">
-                <img src="img/user.png">
-                <h4>Заказчик</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="courier">
-                <img src="img/user.png">
-                <h4>Курьер</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="description">
-                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                <span class="dishes-number">9 блюд</span>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-price">2,460₽</span>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="client">
-                <img src="img/user.png">
-                <h4>Заказчик</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="courier">
-                <img src="img/user.png">
-                <h4>Курьер</h4>
-                <span>Константин Константинопольский</span>
-            </div>
-            <div class="description">
-                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                <span class="dishes-number">9 блюд</span>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-price">2,460₽</span>
-            </div>
-        </div>
     </div>
 
     <span class="data">22.04.2018</span>
     <div class="container">
         <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="cafe-picture"><img src="../static/img/cafe-picture.png"></div>
             <div class="client">
-                <img src="img/user.png">
+                <img src="../static/img/user.png">
                 <h4>Заказчик</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="courier">
-                <img src="img/user.png">
+                <img src="../static/img/user.png">
                 <h4>Курьер</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="description">
+                <img src="/../img/checked.png"><span class="order-status">Заказ выполнен</span>
                 <h3 class="cafe-name">Ханума</h3>
                 <span class="dishes-type">Кавказская, ланчи, халяль</span>
                 <span class="dishes-number">12 блюд</span>
@@ -161,18 +106,19 @@
         </div>
 
         <div class="col-md-3">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="cafe-picture"><img src="../static/img/cafe-picture.png"></div>
             <div class="client">
-                <img src="img/user.png">
+                <img src="../static/img/user.png">
                 <h4>Заказчик</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="courier">
-                <img src="img/user.png">
+                <img src="../static/img/user.png">
                 <h4>Курьер</h4>
                 <span>Константин Константинопольский</span>
             </div>
             <div class="description">
+                <img src="../static/img/checked.png"><span class="order-status">Заказ выполнен</span>
                 <h3 class="cafe-name">В гостях у дяди Ашота</h3>
                 <span class="dishes-number">9 блюд</span>
                 <span class="dishes-type">Кавказская, ланчи, халяль</span>

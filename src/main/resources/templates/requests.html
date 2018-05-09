@@ -22,28 +22,28 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/requests-style.css">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/requests-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="home" class="title">
+        <a href="orders-processing.html" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="img/user.png">
-        <p class="manager-name">
-            Порфильева Анастасия
+        <img class="manager-picture" src="../static/img/user.png">
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+            No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/orders/new">Заказы</a></li>
             <li><a href="/couriers/0">Курьеры</a></li>
             <li><a href="/reports">Отчеты</a></li>
             <li><a href="/archive">Архив</a></li>
             <li><a href="/clients/0">Пользователи</a></li>
-            <li><a href="cafes">Кафе</a></li>
+            <li><a href="/cafes">Кафе</a></li>
         </ul>
     </div>
 </section>
@@ -54,13 +54,14 @@
             <input type="submit" value="Искать" class="search-button">
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
-        <a href="./requests.html" class="requests">Заявки <span class="number">10</span> </a>
+        <a href="couriers.html" class="return"><img src="../static/img/back.png"></a>
+        <a href="requests.html" class="requests">Заявки <span class="number">10</span> </a>
     </div>
-    <div  class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
+                <img src="../static/img/page-2.png">
+                <img class="user-picture" src="../static/img/user.png">
                 <span>Эраст Бориславский</span>
                 <ul>
                     <li><a href="#">Принять</a></li>
@@ -68,8 +69,8 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
+                <img src="../static/img/page-2.png">
+                <img class="user-picture" src="../static/img/user.png">
                 <span>Эраст Бориславский</span>
                 <ul>
                     <li><a href="#">Принять</a></li>
@@ -77,71 +78,8 @@
                 </ul>
             </div>
             <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
-                <span>Эраст Бориславский</span>
-                <ul>
-                    <li><a href="#">Принять</a></li>
-                    <li><a href="#">Отклонить</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <img src="img/page-2.png">
-                <img class="user-picture" src="img/user.png">
+                <img src="../static/img/page-2.png">
+                <img class="user-picture" src="../static/img/user.png">
                 <span>Эраст Бориславский</span>
                 <ul>
                     <li><a href="#">Принять</a></li>

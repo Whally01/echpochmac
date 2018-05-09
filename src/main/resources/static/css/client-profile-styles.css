@@ -1,0 +1,62 @@
+.main .user-history{
+    margin-bottom: 40px;
+}
+.main .user-history .user-picture{
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 6px;
+}
+
+.main .user-history span {
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.main .container .description {
+    bottom: 20%;
+}
+.main .container .courier {
+    position: absolute;
+    top: 10%;
+}
+
+.main .container .col-md-3 .cafe-picture {
+    margin-bottom: 20px;
+}
+
+.main .container .col-md-3 div:last-child img {
+    width: auto;
+    opacity: 1;
+}
+
+.main .container .col-md-3 div:last-child img:first-child {
+    padding-bottom: 5px;
+    padding-left: 5%;
+}
+
+.main .container .col-md-3 div:last-child span {
+    margin-left:3px;
+    margin-right: 5px;
+}
+
+.main .container .col-md-3 div:last-child span:last-child {
+    float: right;
+    padding-right: 5%;
+}
+
+.main .container .col-md-3:last-child .cafe-picture {
+    background: black;
+}
+
+.main .container .col-md-3:last-child img {
+    opacity: 0.6;
+}

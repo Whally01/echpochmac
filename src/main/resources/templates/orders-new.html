@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Заказы</title>
+    <title>Новые заказы</title>
     <script data-require="jquery@1.10.0" data-semver="1.10.0"
             src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
 
@@ -26,17 +26,17 @@
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="home" class="title">
+        <a href="orders-processing.html" class="title">
             echpochmak
         </a>
         <img class="manager-picture" src="/img/user.png">
-        <p class="manager-name" >
+        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
             No Name
         </p>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders">Заказы</a></li>
+            <li><a href="/orders/new">Заказы</a></li>
             <li><a href="/couriers/0">Курьеры</a></li>
             <li><a href="/reports">Отчеты</a></li>
             <li><a href="/archive">Архив</a></li>
@@ -48,8 +48,8 @@
 <section class="main">
     <div class="clearfix">
         <ul>
-            <li><a href="#">Новые 4</a></li>
-            <li><a href="#">В обработке 4</a></li>
+            <li><a href="/orders/new">Новые 2</a></li>
+            <li><a href="/orders/processing">В обработке 4</a></li>
         </ul>
         <form name="search" class="search">
             <input type="submit" value="Искать" class="search-button">
@@ -59,33 +59,24 @@
 
     <div class="container">
         <div class="col-md-3" data-toggle="modal" data-target="#view-item" th:each="order:${orders}">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
+            <div class="cafe-picture"><img src="/../img/cafe-picture.png"></div>
             <div class="client">
-                <img src="img/user.png">
-                <span th:text="${order.user.getFirstname()}+' '+${order.user.lastname}">Not Found</span>
+                <img src="/../img/user.png">
+                <h4>Заказчик</h4>
+                <span th:text="${order.user.firstname}+' '+${order.user.lastname}">Not Found</span>
             </div>
             <div class="description">
                 <h3 class="cafe-name">Ханума</h3>
-                <span class="dishes-type" th:text="${order.dishes.}">Кавказская, ланчи, халяль</span>
-                <span class="dishes-number" th:text="${order.quantity}">12 блюд</span>
-                <span class="dishes-price" th:text="${order.priceOrder}"></span>
+                <table>
+                    <tbody>
+                    <tr th:each="dish:${order.dishes}">
+                        <span  class="dishes-type" th:text="${dish.name}"></span>
+                    </tr>
+                    </tbody>
+                </table>
+                <span class="dishes-number" th:value="${order.quantity}"></span>
+                <span class="dishes-price" th:text="${order.priceOrder} + '₽'"></span>
             </div>
-        </div>
-        <div class="col-md-3" data-toggle="modal" data-target="#view-item">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
-            <div class="client">
-                <img src="img/user.png">
-                <span>Ильнур Ядгаров</span>
-            </div>
-            <div class="description">
-                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
-                <span class="dishes-number">9 блюд</span>
-                <span class="dishes-type">Кавказская, ланчи, халяль</span>
-                <span class="dishes-price">2,460₽</span>
-            </div>
-        </div>
-        <div class="col-md-3" data-toggle="modal" data-target="#add-item">
-            <div class="cafe-picture"><img src="img/cafe-picture.png"></div>
         </div>
     </div>
 </section>
@@ -113,14 +104,14 @@
 
 <div class="modal fade" id="view-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" >
+        <div class="modal-content">
             <div class="modal-header clearfix">
                 <div class="cafe-picture">
-                    <img src="img/cafe-picture.png">
+                    <img src="/img/cafe-picture.png">
                 </div>
-                <div class="client">
-                    <img src="img/user.png">
-                    <span>Ильнур Ядгаров</span>
+                <div class="client"  th:each="order:${orders}">
+                    <img src="/img/user.png">
+                    <span th:text="${order.user.firstname}">    </span>
                 </div>
                 <div class="description clearfix">
                     <h3 class="cafe-name">В гостях у дяди Ашота</h3>
@@ -131,12 +122,12 @@
             </div>
             <div class="modal-body clearfix">
                 <div class="courier">
-                    <img src="img/user.png">
+                    <img src="/img/user.png">
                     <span>Ильнур Ядгаров</span>
                 </div>
                 <div class="order clearfix">
                     <div>
-                        <img src="img/like.png" class="like">
+                        <img src="/img/like.png" class="like">
                         <span>Гороховый суп</span>
                         <span>100Р</span>
                     </div>
@@ -146,7 +137,7 @@
                         <span>100Р</span>
                     </div>
                     <div>
-                        <img src="img/dislike.png" class="dislike">
+                        <img src="/img/dislike.png" class="dislike">
                         <span>Гороховый суп</span>
                         <span>100Р</span>
                     </div>
@@ -155,8 +146,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer clearfix">
-                <img src="img/facebook-places.png">
+            <div class="modal-footer clearfix"  th:each="order:${orders}">
+                <img src="/img/facebook-places.png">
                 <span th:text="${order.destinationAddress}"></span>
             </div>
         </div>

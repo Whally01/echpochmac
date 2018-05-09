@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Курьеры</title>
+    <title>Архив</title>
     <script data-require="jquery@1.10.0" data-semver="1.10.0"
             src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
 
@@ -22,13 +22,14 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/../css/main.css">
-    <link rel="stylesheet" href="/../css/users-styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/orders-styles.css">
+    <link rel="stylesheet" href="/css/archive-styles.css">
 </head>
 <body>
 <section class="header">
     <div class="header-wrapper">
-        <a href="orders-processing.html" class="title">
+        <a href="/orders/new" class="title">
             echpochmak
         </a>
         <img class="manager-picture" src="/img/user.png">
@@ -49,29 +50,40 @@
 </section>
 <section class="main">
     <div class="clearfix">
-        <ul>
-            <li><a href="#">Свободен 10</a></li>
-            <li><a href="#">Занят 3</a></li>
-            <li><a href="#">Все 13</a></li>
-        </ul>
-
+        <div class="courier-history clearfix">
+            <a href="/couriers/0" class="return"><img src="/img/back.png"></a>
+            <img src="/img/user.png" class="user-picture">
+            <span th:text="${courier.get().firstname} + ' ' + ${courier.get().lastname}">Имя Фамилия</span>
+        </div>
         <form name="search" class="search">
             <input type="submit" value="Искать" class="search-button">
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
-        <a href="/requests/0" class="requests">Заявки <span class="number">10</span> </a>
     </div>
 
+    <span class="data">23.04.2018</span>
     <div class="container">
-        <a class="col-md-1"  th:each="courier:${couriers}" th:href="@{/couriers/courier/{courierId}/(courierId=${courier.id})}">
-            <div class="courier-picture">
+        <div class="col-md-3" th:each="order:${courier.get().orders}">
+            <div class="cafe-picture"><img src="../static/img/cafe-picture.png"></div>
+            <div class="client">
+                <img src="../static/img/user.png">
+                <h4>Заказчик</h4>
+                <span th:text="${order.user.firstname} + ' ' + ${order.user.lastname}">Константин Константинопольский</span>
+            </div>
+            <div class="courier">
                 <img src="/img/user.png">
+                <h4>Курьер</h4>
+                <span th:text="${courier.get().firstname} + ' ' + ${courier.get().lastname}">Константин Константинопольский</span>
             </div>
-            <div class="courier-name">
-                <span th:text="${courier.firstname}+' '+${courier.lastname}">Константин Константинопольский</span>
-                <img src="/img/page-1.png">
+            <div class="description">
+                <img src="/img/cancel.png"><span class="order-status">Заказ не выполнен</span>
+                <h3 class="cafe-name">В гостях у дяди Ашота</h3>
+                <span class="dishes-number">9 блюд</span>
+                <span class="dishes-type">Кавказская, ланчи, халяль</span>
+                <span class="dishes-price">2,460₽</span>
             </div>
-        </a>
+        </div>
+
     </div>
 </section>
 </body>

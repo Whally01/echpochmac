@@ -1,5 +1,7 @@
 package ru.itis.echpochmac.model;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
@@ -20,7 +22,7 @@ public class Order {
     private Long quantity;
 
     @NotNull
-    private Integer priceOrder;
+    private Double priceOrder;
 
     @NotBlank
     private String comment;
@@ -28,6 +30,10 @@ public class Order {
     @NotBlank
     @Size(max = 40)
     private String destinationAddress;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 10, columnDefinition = "varchar(10) default 'NEW'")
+    private OrderStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
@@ -37,13 +43,18 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<Dish> dishes;
 
-    public Order(){}
+    public Order() {
+    }
 
-    public Order(Long quantity, Integer priceOrder, String comment, String destinationAddress){
+    public Order(@NotNull Long quantity, @NotNull Double priceOrder, @NotBlank String comment,
+                 @NotBlank @Size(max = 40) String destinationAddress,
+                 User user, Set<Dish> dishes) {
         this.quantity = quantity;
         this.priceOrder = priceOrder;
         this.comment = comment;
-        this. destinationAddress = destinationAddress;
+        this.destinationAddress = destinationAddress;
+        this.user = user;
+        this.dishes = dishes;
     }
 
     public Long getId() {
@@ -70,7 +81,7 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public Integer getPriceOrder() {
+    public Double getPriceOrder() {
         return priceOrder;
     }
 
@@ -96,5 +107,17 @@ public class Order {
 
     public void setDishes(Set<Dish> dishes) {
         this.dishes = dishes;
+    }
+
+    public void setPriceOrder(Double priceOrder) {
+        this.priceOrder = priceOrder;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 }
