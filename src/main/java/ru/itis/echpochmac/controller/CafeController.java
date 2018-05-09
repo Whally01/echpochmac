@@ -7,12 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.itis.echpochmac.model.Cafe;
 import ru.itis.echpochmac.payload.ApiResponse;
 import ru.itis.echpochmac.payload.CafePayLoad;
-import ru.itis.echpochmac.repository.CafeRepository;
 import ru.itis.echpochmac.service.impl.CafeService;
 
 import java.net.URI;
@@ -40,13 +38,15 @@ public class CafeController {
         return ResponseEntity.created(location).body(new ApiResponse(true, "Cafe added sucessufully"));
     }*/
 
-    @PostMapping("/addCafes")
-    public String addCafe(@RequestBody CafePayLoad cafePayLoad) {
-
+    @PostMapping("/cafes/addCafes")
+    public ResponseEntity<ApiResponse> addCafe(@RequestBody CafePayLoad cafePayLoad) {
         Cafe cafe = new Cafe(cafePayLoad.getName(), cafePayLoad.getDescription(), cafePayLoad.getImg());
         Cafe result = cafeService.save(cafe);
 
-        return "cafe";
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentContextPath().path("/cafes/{add}")
+                .buildAndExpand(result.getName()).toUri();
+        return ResponseEntity.created(location).body(new ApiResponse(true, "Cafe added successfully"));
     }
 
     @GetMapping("/cafes")

@@ -3,9 +3,9 @@ INSERT INTO roles VALUES (1, 'ROLE_ADMIN');
 INSERT INTO roles VALUES (2, 'ROLE_ORDERER');
 INSERT INTO roles VALUES (3, 'ROLE_COURIER');
 
-INSERT INTO cafes (id,name, description, img) values (1,'Ханума', 'Кавказская, ланчи, ..', null );
-INSERT INTO cafes (id,name, description, img) values (2,'Добрая Столовая', 'Щебуреки, токмачи, ..', null );
-INSERT INTO cafes (id,name, description, img) values (3,'McDonalds', 'бургеры, газировки, ..', null );
+INSERT INTO cafes (id, name, description, img) values (DEFAULT, 'Ханума', 'Кавказская, ланчи, ..', null );
+INSERT INTO cafes (id, name, description, img) values (DEFAULT, 'Добрая Столовая', 'Щебуреки, токмачи, ..', null );
+INSERT INTO cafes (id, name, description, img) values (DEFAULT, 'McDonalds', 'бургеры, газировки, ..', null );
 
 /*Добавляем супер-админа */
 INSERT INTO users (id, created_at, update_at, avatar, firstname, lastname, login, password, phone) VALUES (DEFAULT, '2018-05-03 22:54:33.370000', '2018-05-03 22:54:33.370000', null , 'Админ', 'Админов', 'admin', '$2a$10$rElcXUk5MVGnwgnMudmqN.WgTQDH.wLwA/smiqejDBtSMB8QrbIeq','89000000000');
