@@ -40,7 +40,7 @@ public class Order {
     private Set<Dish> dishes;
 
 
-    private Long courierId;
+  //  private Long courierId;
 
     public Order() {
     }

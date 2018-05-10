@@ -48,9 +48,9 @@ public class User extends DateAudit {
     @Type(type="org.hibernate.type.BinaryType")
     private byte[] avatar;
 
-    @JoinColumn(name = "likes")
+   /* @JoinColumn(name = "likes")
     @OneToMany(mappedBy = "user")
-    private List<Boolean> likes;
+    private List<Boolean> likes;*/
 
     @ManyToMany
     @JoinTable(name = "user_role",
@@ -154,11 +154,11 @@ public class User extends DateAudit {
     }
 
 
-    public List<Boolean> getLikes() {
+    /*public List<Boolean> getLikes() {
         return likes;
     }
 
     public void setLikes(List<Boolean> likes) {
         this.likes = likes;
-    }
+    }*/
 }

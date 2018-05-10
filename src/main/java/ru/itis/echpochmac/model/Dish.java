@@ -41,9 +41,9 @@ public class Dish {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Order order;
-
+/*
     @JoinColumn(name = "likes")
-    private List<Boolean> likes;
+    private List<Boolean> likes;*/
 
     public Dish(){}
 
@@ -123,11 +123,11 @@ public class Dish {
         this.price = price;
     }
 
-    public List<Boolean> getLikes() {
+   /* public List<Boolean> getLikes() {
         return likes;
     }
 
     public void setLikes(List<Boolean> likes) {
         this.likes = likes;
-    }
+    }*/
 }
