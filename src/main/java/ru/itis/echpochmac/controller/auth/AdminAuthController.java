@@ -56,7 +56,7 @@ public class AdminAuthController {
         String jwt = tokenProvider.generateToken(authentication);
 
         CookieUtil.create(response, /*"Bearer " +*/ jwtCookieName, jwt, false, 36000000, "localhost");
-        return "redirect:/orders/new";
+        return "redirect:/orders/new/0";
     }
 
     @RequestMapping(URLs.LOGOUT)

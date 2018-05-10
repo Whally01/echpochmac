@@ -35,13 +35,13 @@
         <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
             No Name
         </p>
-    </div>her
+    </div>
     <div class="navigation">
         <ul>
-            <li><a href="/orders/new">Заказы</a></li>
+            <li><a href="/orders/new/0">Заказы</a></li>
             <li><a href="/couriers/0">Курьеры</a></li>
-            <li><a href="/reports">Отчеты</a></li>
-            <li><a href="/archive">Архив</a></li>
+            <li><a href="/orders/reports/0">Отчеты</a></li>
+            <li><a href="/orders/archive/0">Архив</a></li>
             <li><a href="/clients/0">Пользователи</a></li>
             <li><a href="/cafes">Кафе</a></li>
         </ul>

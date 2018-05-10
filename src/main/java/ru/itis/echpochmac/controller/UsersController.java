@@ -34,7 +34,7 @@ public class UsersController {
     public String getCouriers(@PathVariable String page, Model model) {
         Role userRole = roleService.findByName(RoleName.ROLE_COURIER)
                 .orElseThrow(() -> new AppException("User Role not set."));
-        model.addAttribute("couriers", userService.findUsersByRoles(userRole, new PageRequest(Integer.parseInt(page), 50)));
+        model.addAttribute("couriers", userService.findUsersByRoles(userRole,  PageRequest.of(Integer.parseInt(page), 25)));
         return "couriers";
     }
 
@@ -42,7 +42,7 @@ public class UsersController {
     public String getClients(@PathVariable String page, Model model) {
         Role userRole = roleService.findByName(RoleName.ROLE_ORDERER)
                 .orElseThrow(() -> new AppException("User Role not set."));
-        model.addAttribute("clients", userService.findUsersByRoles(userRole, new PageRequest(Integer.parseInt(page), 50)));
+        model.addAttribute("clients", userService.findUsersByRoles(userRole,  PageRequest.of(Integer.parseInt(page), 25)));
         return "clients";
     }
 
