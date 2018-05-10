@@ -55,7 +55,7 @@ public class AdminAuthController {
 
         String jwt = tokenProvider.generateToken(authentication);
 
-        CookieUtil.create(response, /*"Bearer " +*/ jwtCookieName, jwt, false, 36000000, "localhost");
+        CookieUtil.create(response, /*"Bearer " +*/ jwtCookieName, jwt, false, 36000000, "intense-caverns-46252.herokuapp.com");
         return "redirect:/orders/new/0";
     }
 
