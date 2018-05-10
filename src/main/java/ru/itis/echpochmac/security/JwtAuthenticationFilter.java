@@ -1,15 +1,12 @@
 package ru.itis.echpochmac.security;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.itis.echpochmac.util.CookieUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -17,9 +14,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.CookieStore;
-import java.util.HashMap;
-import java.util.Map;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
@@ -28,12 +22,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     CustomUserDetailsService customUserDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String jwt = getJwtFromRequest(httpServletRequest);
 
-        /*if (jwt == null) {
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
-        }*/
         if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             Long userId = tokenProvider.getUserIdFromJWT(jwt);
 
@@ -56,9 +47,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
    }*/
 
         // Get JWT token from cookie
-        for (Cookie cookie : request.getCookies()) {
-            if (cookie.getName().equals("JWT-TOKEN")) {
-                return cookie.getValue();
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("JWT-TOKEN")) {
+                    return cookie.getValue();
+                }
             }
         }
         return null;
