@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -47,6 +48,10 @@ public class User extends DateAudit {
     @Type(type="org.hibernate.type.BinaryType")
     private byte[] avatar;
 
+    @JoinColumn(name = "likes")
+    @OneToMany(mappedBy = "user")
+    private List<Boolean> likes;
+
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -55,7 +60,6 @@ public class User extends DateAudit {
 
     @OneToMany(mappedBy = "user")
     private Set<Order> orders;
-
 
 
     public User() {
@@ -149,4 +153,12 @@ public class User extends DateAudit {
         this.orders = orders;
     }
 
+
+    public List<Boolean> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Boolean> likes) {
+        this.likes = likes;
+    }
 }

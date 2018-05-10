@@ -4,8 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "dishes")
@@ -42,6 +41,9 @@ public class Dish {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    @JoinColumn(name = "likes")
+    private List<Boolean> likes;
 
     public Dish(){}
 
@@ -115,5 +117,17 @@ public class Dish {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public List<Boolean> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Boolean> likes) {
+        this.likes = likes;
     }
 }

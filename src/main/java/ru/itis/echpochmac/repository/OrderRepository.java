@@ -6,6 +6,6 @@ import ru.itis.echpochmac.model.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-  //  Page<Order> findAllByStatus(Boolean status, Pageable pageable);
+  //  Page<Order> findAllByStatus(Boolean status, Pageable pageable)
 
 }

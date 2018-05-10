@@ -1,13 +1,9 @@
 package ru.itis.echpochmac.model;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -42,6 +38,9 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private Set<Dish> dishes;
+
+
+    private Long courierId;
 
     public Order() {
     }

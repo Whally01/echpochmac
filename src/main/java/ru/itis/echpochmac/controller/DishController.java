@@ -47,7 +47,7 @@ public class DishController {
         Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
         Dish result = dishService.save(dish);
 
-        return "redirect:/dishes";
+        return "redirect:/cafe-menu";
     }
 
     /*@GetMapping(path = "/dishes")
