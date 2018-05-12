@@ -3,6 +3,7 @@ package ru.itis.echpochmac.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.echpochmac.model.Cafe;
+import ru.itis.echpochmac.model.User;
 import ru.itis.echpochmac.repository.CafeRepository;
 import ru.itis.echpochmac.service.ICafeService;
 
@@ -26,6 +27,11 @@ public class CafeService implements ICafeService {
     @Override
     public Cafe save(Cafe cafe) {
         return cafeRepository.save(cafe);
+    }
+
+    @Override
+    public Optional<Cafe> findById(String  cafeId) {
+        return cafeRepository.findById(Long.parseLong(cafeId));
     }
 
     @Override

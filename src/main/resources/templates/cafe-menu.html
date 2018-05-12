@@ -49,7 +49,7 @@
 <section class="main">
     <div class="clearfix">
         <div class="cafe-name clearfix">
-            <a href="cafe.html" class="return"><img src="../static/img/back.png"></a>
+            <a href="cafe.html" class="return"><img src="/img/back.png"></a>
             <span>Ханума</span>
         </div>
 
@@ -58,40 +58,23 @@
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
         <div class="add-item" data-toggle="modal" data-target="#add-item">
-            <img src="../static/img/adding.png">
+            <img src="img/adding.png">
             <span>Добавить новое блюдо</span>
         </div>
     </div>
 
     <div class="container">
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="../static/img/cafe-picture.png" data-toggle="modal" data-target="#edit-item"></div>
+        <div class="col-md-3" >
+            <div class="cafe-picture"><img src="/img/cafe-picture.png" data-toggle="modal" data-target="#edit-item"></div>
             <div class="description" data-toggle="modal" data-target="#edit-item">
-                <h3 class="dish-name">Картофельное пюре</h3>
-                <span class="dish-description">Ароматный картофель с молоком и маслом</span>
-                <span class="dish-price">60₽</span>
+                <h3 class="dish-name" th:text="${cafe.get().name}">Картофельное пюре</h3>
+                <span class="dish-description" th:text="${cafe.get().description}" >Ароматный картофель с молоком и маслом</span>
+                <span class="dish-price" th:text="${cafe.get().img}" >60₽</span>
             </div>
             <div>
-                <img src="../static/img/like.png">
+                <img src="/img/like.png">
                 <span>12</span>
-                <img src="../static/img/dislike.png">
-                <span>4</span>
-                <span class="delete-item" data-toggle="modal" data-target="#delete-item">Удалить</span>
-            </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="cafe-picture"><img src="../static/img/cafe-picture.png" data-toggle="modal" data-target="#edit-item"></div>
-            <div class="description" data-toggle="modal" data-target="#edit-item">
-                <h3 class="dish-name">Котлета по-киевски</h3>
-                <span class="dish-description">Куриная котлета в панировке со сливочным маслом внутри</span>
-                <span class="dish-price">80₽</span>
-            </div>
-            <div>
-                <img src="../static/img/like.png">
-                <span>12</span>
-                <img src="../static/img/dislike.png">
+                <img src="/img/dislike.png">
                 <span>4</span>
                 <span class="delete-item" data-toggle="modal" data-target="#delete-item">Удалить</span>
             </div>

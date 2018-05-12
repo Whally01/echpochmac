@@ -41,7 +41,7 @@ public class DishController {
         return ResponseEntity.created(location).body(new ApiResponse(true, "Dish added successfully"));
     }
 
-    @PostMapping("/addCafes")
+    @PostMapping("/add")
     public String addDishes(@RequestBody DishPayLoad dishPayLoad) {
 
         Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
