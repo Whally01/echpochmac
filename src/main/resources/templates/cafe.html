@@ -59,14 +59,14 @@
     </div>
 
     <div class="container" >
-        <div class="col-md-3" th:each="cafe:${cafes}" th:href="@{/cafes/cafe/{cafeId}/(cafeId=${cafe.id})}" >
+        <a class="col-md-3" th:each="cafe:${cafes}" th:href="@{/cafes/cafe/{cafeId}/(cafeId=${cafe.id})}" >
             <div class="cafe-picture"><img src="/img/cafe-picture.png"></div>
             <div class="description">
                 <h3 class="cafe-name" th:text="${cafe.name}"></h3>
                 <span class="dishes-type" th:text="${cafe.description}"></span>
                 <span class="dishes-number" th:text="${cafe.dishes.size()}"></span>
             </div>
-        </div>
+        </a>
     </div>
 </section>
 
