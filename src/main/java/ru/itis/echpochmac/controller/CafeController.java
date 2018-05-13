@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ru.itis.echpochmac.model.Cafe;
 import ru.itis.echpochmac.model.User;
 import ru.itis.echpochmac.payload.CafePayLoad;
+import ru.itis.echpochmac.payload.DishPayLoad;
 import ru.itis.echpochmac.service.impl.CafeService;
 import ru.itis.echpochmac.util.URLs;
 
@@ -44,6 +45,7 @@ public class CafeController {
     public String getCourier(@PathVariable String id, Model model) {
         Optional<Cafe> cafe = cafeService.findById(id);
         model.addAttribute("cafe", cafe);
+        model.addAttribute("dishPayLoad", new DishPayLoad());
         return "cafe-menu";
     }
 

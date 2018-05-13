@@ -58,7 +58,7 @@
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
         <div class="add-item" data-toggle="modal" data-target="#add-item">
-            <img src="img/adding.png">
+            <img src="/img/adding.png">
             <span>Добавить новое блюдо</span>
         </div>
     </div>
@@ -88,15 +88,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="dish-description">
+                <form class="dish-description" method="post" th:object="${dishPayLoad}" th:action="@{/dishes/addDishesWeb}" >
                     <label>Название блюда</label>
-                    <input type="text">
+                    <label>
+                        <input type="text" th:field="*{name}">
+                    </label>
                     <label>Описание</label>
-                    <input type="text">
+                    <label>
+                        <input type="text" th:field="*{description}">
+                    </label>
                     <label>Цена</label>
-                    <input class="price">
-                    <input class="load" type="file" name="photo" multiple accept="image/*,image/jpeg">
-                    <button type="button">Добавить блюдо</button>
+                    <label>
+                        <input class="text" th:field="*{price}">
+                    </label>
+                    <label>Картинка</label>
+                    <label>
+                        <input class="text" th:field="*{img}">
+                    </label>
+                    <!--<input class="load" type="file" name="photo" multiple accept="image/*,image/jpeg">-->
+                    <input type="submit" src="/img/arrow" />Добавить блюдо
                 </form>
             </div>
         </div>
