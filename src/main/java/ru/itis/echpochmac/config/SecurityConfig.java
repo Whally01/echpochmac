@@ -71,6 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg",
                 "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
                 .antMatchers("/api/v1/login", "/api/v1/signup", "/login").permitAll()
+                .antMatchers("/api/v1/echpochmac/**").hasRole("CLIENT")
                 .antMatchers("/couriers/**", "/orders/**", "/clients/**", "/cafes/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
 

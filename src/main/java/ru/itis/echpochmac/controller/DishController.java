@@ -43,15 +43,6 @@ public class DishController {
                 .buildAndExpand(result.getName()).toUri();
         return ResponseEntity.created(location).body(new ApiResponse(true, "Dish added successfully"));
     }
-//
-//    @PostMapping("/add")
-//    public String addDishes(@RequestBody DishPayLoad dishPayLoad) {
-//
-//        Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
-//        Dish result = dishService.save(dish);
-//
-//        return "redirect:/cafe-menu";
-//    }
 
     @PostMapping("/addDishesWeb")
     public String addDishWeb(@ModelAttribute("dishPayLoad") DishPayLoad dishPayLoad) {

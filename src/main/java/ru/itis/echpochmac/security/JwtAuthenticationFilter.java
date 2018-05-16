@@ -57,7 +57,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         return null;
 
-        // bel'yat bu eshlemi, izviniti
        /* String token = CookieUtil.getValue(request, "JWT-TOKEN");
         logger.info("!!! TOKEN FROM COOKIE: " + token);
         if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {

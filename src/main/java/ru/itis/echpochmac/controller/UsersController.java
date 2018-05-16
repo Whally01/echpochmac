@@ -40,7 +40,7 @@ public class UsersController {
 
     @GetMapping(URLs.CLIENTS + "/{page}")
     public String getClients(@PathVariable String page, Model model) {
-        Role userRole = roleService.findByName(RoleName.ROLE_ORDERER)
+        Role userRole = roleService.findByName(RoleName.ROLE_CLIENT)
                 .orElseThrow(() -> new AppException("User Role not set."));
         model.addAttribute("clients", userService.findUsersByRoles(userRole,  PageRequest.of(Integer.parseInt(page), 25)));
         return "clients";
