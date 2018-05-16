@@ -20,11 +20,11 @@ import javax.validation.Valid;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(URLs.CAFES)
 public class CafeController {
     private final CafeService cafeService;
 
@@ -33,7 +33,7 @@ public class CafeController {
         this.cafeService = cafeService;
     }
 
-    @PostMapping("/addCafes")
+    @PostMapping(URLs.CAFES + URLs.ADD)
     public String addCafe(@ModelAttribute("cafePayLoad") CafePayLoad cafePayLoad) {
         Cafe cafe = new Cafe(cafePayLoad.getName(), cafePayLoad.getDescription());
         Cafe result = cafeService.save(cafe);
@@ -41,21 +41,26 @@ public class CafeController {
         return "redirect:/cafes";
     }
 
-    @GetMapping(URLs.CAFE + "/{id}")
-    public String getCourier(@PathVariable String id, Model model) {
+  /*  @GetMapping(URLs.CAFES + URLs.CAFE + "/{id}")
+    public String getCafe(@PathVariable String id, Model model) {
         Optional<Cafe> cafe = cafeService.findById(id);
         model.addAttribute("cafe", cafe);
         model.addAttribute("dishPayLoad", new DishPayLoad());
         return "cafe-menu";
-    }
+    }*/
 
-    @GetMapping
-    public String cafes(Model model) {
+
+    @GetMapping(URLs.CAFES)
+    public String getCafes(Model model) {
         model.addAttribute("cafes", cafeService.findAll());
         model.addAttribute("cafePayLoad", new CafePayLoad());
         return "cafe";
     }
 
+    /**
+     * @apiNote REST API for iOS
+     * Получение списка всех кафе
+     */
     @GetMapping(URLs.API + URLs.CAFES)
     public ResponseEntity<?> cafes() {
         List<Cafe> result = cafeService.findAll();

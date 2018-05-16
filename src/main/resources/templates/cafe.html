@@ -59,7 +59,7 @@
     </div>
 
     <div class="container" >
-        <a class="col-md-3" th:each="cafe:${cafes}" th:href="@{/cafes/cafe/{cafeId}/(cafeId=${cafe.id})}" >
+        <a class="col-md-3" th:each="cafe:${cafes}" th:href="@{/cafes/cafe/{cafeId}/dishes/(cafeId=${cafe.id})}" >
             <div class="cafe-picture"><img src="/img/cafe-picture.png"></div>
             <div class="description">
                 <h3 class="cafe-name" th:text="${cafe.name}"></h3>
@@ -75,7 +75,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="dish-description" method="post" th:object="${cafePayLoad}" th:action="@{/cafes/addCafes}" >
+                <form class="dish-description" method="post" th:object="${cafePayLoad}" th:action="@{/cafes/add}" >
                     <label>Название кафе</label>
                     <label>
                         <input type="text" th:field="*{name}" />

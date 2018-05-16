@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(URLs.DISHES)
 public class DishController {
 
     private final DishService dishService;
@@ -32,25 +31,26 @@ public class DishController {
         this.cafeService = cafeService;
     }
 
-
-    @PostMapping("/addDishes")
-    public ResponseEntity<?> addDish(@RequestBody DishPayLoad dishPayLoad) {
+    /**
+     * Добавление блюда
+     */
+    @PostMapping(URLs.CAFES + URLs.CAFE + "/{cafeId}" + URLs.DISHES + URLs.ADD)
+    public String addDish(@ModelAttribute("dishPayLoad") DishPayLoad dishPayLoad, @PathVariable String cafeId) {
+        Cafe cafe = cafeService.findById(Long.parseLong(cafeId)).
+                orElseThrow(() -> new AppException("Cafe not found!"));
         Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
-        Dish result = dishService.save(dish);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/dishes/{add}")
-                .buildAndExpand(result.getName()).toUri();
-        return ResponseEntity.created(location).body(new ApiResponse(true, "Dish added successfully"));
-    }
-
-    @PostMapping("/addDishesWeb")
-    public String addDishWeb(@ModelAttribute("dishPayLoad") DishPayLoad dishPayLoad) {
-        Dish dish = new Dish(dishPayLoad.getName(), dishPayLoad.getImg(), dishPayLoad.getDescription(), dishPayLoad.getPrice());
+        dish.setCafe(cafe);
         Dish result = dishService.save(dish);
 
-        return "redirect:/cafes";
+        return "redirect:/cafes/cafe/{cafeId}/dishes";
     }
 
+
+    /**
+     * Получаем конкретное блюдо по его id
+     *
+     * @param id - идентификатор блюда
+     */
     @GetMapping(URLs.DISH + "/{id}")
     public String getDish(@PathVariable String id, Model model) {
         Optional<Dish> dish = dishService.findById(id);
@@ -58,9 +58,15 @@ public class DishController {
         return "cafe-menu";
     }
 
-    @GetMapping
-    public String dishes(Model model) {
-        //model.addAttribute("dishes", dishService.findAll());
+    /**
+     * Получаем список блюд выбранного кафе по его id
+     *
+     * @param cafeId - идентификатор Кафе
+     */
+    @GetMapping(URLs.CAFES + URLs.CAFE + "/{cafeId}" + URLs.DISHES)
+    public String getDishesByCafe(Model model, @PathVariable(name = "cafeId") String cafeId) {
+        Optional<Cafe> cafe = cafeService.findById(Long.parseLong(cafeId));
+        model.addAttribute("cafe", cafe);
         model.addAttribute("dishPayLoad", new DishPayLoad());
         return "cafe-menu";
     }
@@ -75,11 +81,17 @@ public class DishController {
         return list.toString();
     }
 
+    /**
+     * Получаем список блюд выбранного кафе по его id;
+     *
+     * @param cafeId - идентификатор Кафе;
+     * @apiNote REST API for iOS
+     */
     @GetMapping(URLs.API + URLs.DISHES)
     public ResponseEntity<?> getDishesByCafeApi(@RequestParam(name = "cafe_id") String cafeId) {
 
-        Cafe cafe = cafeService.findById(cafeId).
-                orElseThrow(() -> new AppException("User Role not set."));
+        Cafe cafe = cafeService.findById(Long.parseLong(cafeId)).
+                orElseThrow(() -> new AppException("Cafe not found"));
 
         List<Dish> result = dishService.findDishesByCafe(cafe);
 

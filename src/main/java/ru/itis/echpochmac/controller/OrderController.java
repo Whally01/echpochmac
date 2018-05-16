@@ -21,9 +21,10 @@ import ru.itis.echpochmac.util.URLs;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.net.URL;
 
 @Controller
-@RequestMapping(URLs.ORDERS)
+@RequestMapping
 public class OrderController {
     private final OrderService orderService;
     private final UserService userService;
@@ -34,7 +35,7 @@ public class OrderController {
         this.userService = userService;
     }
 
-    @PostMapping(URLs.ADD)
+    @PostMapping(URLs.API + URLs.ORDERS + URLs.ADD)
     @ApiOperation(value = "Создание заказа")
     public ResponseEntity<?> addOrder(@Valid @RequestBody OrderPayLoad orderPayLoad) {
         User user = userService.findById(orderPayLoad.getUserId())
@@ -55,7 +56,7 @@ public class OrderController {
      *
      * @param page - номер страницы
      */
-    @GetMapping("/new/{page}")
+    @GetMapping(URLs.ORDERS + "/new/{page}")
     public String getNewOrders(@PathVariable String page, Model model) {
         model.addAttribute("orders", orderService.findAllByStatus(OrderStatus.NEW, PageRequest.of(Integer.parseInt(page), 20)));
         model.addAttribute("processingCount", orderService.findAllByStatus(OrderStatus.PROCESSING, PageRequest.of(Integer.parseInt(page), 20)).getNumberOfElements());
@@ -67,20 +68,20 @@ public class OrderController {
      *
      * @param page - номер страницы
      */
-    @GetMapping("/processing/{page}")
+    @GetMapping(URLs.ORDERS + "/processing/{page}")
     public String getOrdersInProcessing(@PathVariable String page, Model model) {
         model.addAttribute("orders", orderService.findAllByStatus(OrderStatus.PROCESSING, PageRequest.of(Integer.parseInt(page), 20)));
         model.addAttribute("newCount", orderService.findAllByStatus(OrderStatus.NEW, PageRequest.of(Integer.parseInt(page), 20)).getNumberOfElements());
         return "orders-processing";
     }
 
-    @GetMapping(URLs.ARCHIVE + "/{page}")
+    @GetMapping(URLs.ORDERS + URLs.ARCHIVE + "/{page}")
     public String getArchive(@PathVariable String page, Model model) {
         model.addAttribute("orders", orderService.findAllByStatusOrStatus(OrderStatus.DELIVERED, OrderStatus.CANCELED, PageRequest.of(Integer.parseInt(page), 20)));
         return "archive";
     }
 
-    @GetMapping(URLs.ORDER + "/{id}")
+    @GetMapping(URLs.ORDERS + URLs.ORDER + "/{id}")
     public String order(@PathVariable("id") String id, Model model) {
         Order order = orderService.findOne(id);
         model.addAttribute("order", order);

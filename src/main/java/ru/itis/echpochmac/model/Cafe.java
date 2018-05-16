@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,7 +26,7 @@ public class Cafe {
     private String img;
 
     @OneToMany(mappedBy = "cafe")
-    private Set<Dish> dishes;
+    private List<Dish> dishes;
 
     public Cafe() {
     }
@@ -73,11 +74,11 @@ public class Cafe {
         this.img = img;
     }
 
-    public Set<Dish> getDishes() {
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    public void setDishes(Set<Dish> dishes) {
+    public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
 }

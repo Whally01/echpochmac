@@ -31,7 +31,8 @@
             echpochmak
         </a>
         <img class="manager-picture" src="/img/user.png">
-        <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
+        <p class="manager-name"
+           th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
             No Name
         </p>
     </div>
@@ -64,12 +65,13 @@
     </div>
 
     <div class="container">
-        <div class="col-md-3" >
-            <div class="cafe-picture"><img src="/img/cafe-picture.png" data-toggle="modal" data-target="#edit-item"></div>
+        <div class="col-md-3" th:each="dish:${cafe.get().getDishes()}">
+            <div class="cafe-picture"><img src="/img/cafe-picture.png" data-toggle="modal" data-target="#edit-item">
+            </div>
             <div class="description" data-toggle="modal" data-target="#edit-item">
-                <h3 class="dish-name" th:text="${cafe.get().name}">Картофельное пюре</h3>
-                <span class="dish-description" th:text="${cafe.get().description}" >Ароматный картофель с молоком и маслом</span>
-                <span class="dish-price" th:text="${cafe.get().img}" >60₽</span>
+                <h3 class="dish-name" th:text="${dish.getName()}">Картофельное пюре</h3>
+                <span class="dish-description" th:text="${dish.getDescription()}">Ароматный картофель с молоком и маслом</span>
+                <span class="dish-price" th:text="${dish.getPrice()}">60₽</span>
             </div>
             <div>
                 <img src="/img/like.png">
@@ -88,7 +90,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form class="dish-description" method="post" th:object="${dishPayLoad}" th:action="@{/dishes/addDishesWeb}" >
+                <form class="dish-description" method="post" th:object="${dishPayLoad}"
+                      th:action="@{/cafes/cafe/{cafeId}/dishes/add/(cafeId=${cafe.get().id})}">
                     <label>Название блюда</label>
                     <label>
                         <input type="text" th:field="*{name}">
@@ -106,7 +109,7 @@
                         <input class="text" th:field="*{img}">
                     </label>
                     <!--<input class="load" type="file" name="photo" multiple accept="image/*,image/jpeg">-->
-                    <input type="submit" src="/img/arrow" />Добавить блюдо
+                    <input type="submit" src="/img/arrow" value="Добавить"/>
                 </form>
             </div>
         </div>
