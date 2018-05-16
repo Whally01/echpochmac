@@ -34,9 +34,9 @@ public class DishService implements IDishService {
         return dishRepository.findAll();
     }
 
-    /*@Override
+    @Override
     public List<Dish> findDishesByCafe(Cafe cafe) {
         return dishRepository.findDishesByCafe(cafe);
-    }*/
+    }
 
 }

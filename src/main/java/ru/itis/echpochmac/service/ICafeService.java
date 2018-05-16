@@ -15,6 +15,6 @@ public interface ICafeService {
 
     List<Cafe> findAll();
 
-  /*  Optional<Cafe> findById(Long id);*/
+    Optional<Cafe> findById(Long id);
 
 }

@@ -13,5 +13,5 @@ public interface IDishService {
 
     List<Dish> findAll();
 
-/*    List<Dish> findDishesByCafe(Cafe cafe);*/
+    List<Dish> findDishesByCafe(Cafe cafe);
 }

@@ -30,7 +30,7 @@ public class CafeService implements ICafeService {
     }
 
     @Override
-    public Optional<Cafe> findById(String  cafeId) {
+    public Optional<Cafe> findById(String cafeId) {
         return cafeRepository.findById(Long.parseLong(cafeId));
     }
 
@@ -38,9 +38,9 @@ public class CafeService implements ICafeService {
     public List<Cafe> findAll() {
         return cafeRepository.findAll();
     }
-/*
+
     @Override
     public Optional<Cafe> findById(Long id) {
         return cafeRepository.findById(id);
-    }*/
+    }
 }
