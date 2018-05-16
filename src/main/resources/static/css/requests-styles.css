@@ -55,6 +55,7 @@
 }
 .main .container .col-md-3 img {
     height: 165px;
+    opacity: 0.3;
 }
 
 
@@ -71,12 +72,7 @@
 
 }
 
-.main li a {
-    color: #ff7901;
-    line-height: 34px;
-}
-
-.main li a:last-child {
+.main ul li a {
     color: #ff7901;
     line-height: 34px;
 }
@@ -99,6 +95,9 @@
     background-color: #ff8517;
 }
 
-.main .container .col-md-3:hover span {
+.main .container .col-md-3:hover ul li:last-child a{
+    color: white;
+}
+.main .container .col-md-3:hover span{
     color: white;
 }

@@ -14,6 +14,7 @@ public class URLs {
     public static final String CLIENTS = "/clients";
     public static final String CLIENT = "/client";
     public static final String CAFES = "/cafes";
+    public static final String CAFE = "/cafe";
     public static final String ORDERS = "/orders";
     public static final String ORDER = "/order";
     public static final String DISHES = "/dishes";

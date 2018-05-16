@@ -8,6 +8,7 @@ import ru.itis.echpochmac.repository.DishRepository;
 import ru.itis.echpochmac.service.IDishService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DishService implements IDishService {
@@ -21,6 +22,16 @@ public class DishService implements IDishService {
     @Override
     public Dish save(Dish dish) {
         return dishRepository.save(dish);
+    }
+
+    @Override
+    public Optional<Dish> findById(String dishId) {
+        return dishRepository.findById(Long.parseLong(dishId));
+    }
+
+    @Override
+    public List<Dish> findAll() {
+        return dishRepository.findAll();
     }
 
     /*@Override

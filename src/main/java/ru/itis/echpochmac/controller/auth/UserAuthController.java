@@ -90,7 +90,7 @@ public class UserAuthController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        Role userRole = roleService.findByName(RoleName.ROLE_ORDERER)
+        Role userRole = roleService.findByName(RoleName.ROLE_CLIENT)
                 .orElseThrow(() -> new AppException("User Role not set."));
 
         user.setRoles(Collections.singleton(userRole));

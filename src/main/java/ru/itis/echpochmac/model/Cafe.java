@@ -1,6 +1,7 @@
 package ru.itis.echpochmac.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -20,19 +21,24 @@ public class Cafe {
     @Size(max = 40)
     private String description;
 
-    @NotBlank
     @Size(max = 40)
     private String img;
 
-    @OneToMany (mappedBy = "cafe")
+    @OneToMany(mappedBy = "cafe")
     private Set<Dish> dishes;
 
-    public Cafe(){  }
+    public Cafe() {
+    }
 
     public Cafe(String name, String description, String img) {
         this.name = name;
         this.description = description;
         this.img = img;
+    }
+
+    public Cafe(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public Long getId() {

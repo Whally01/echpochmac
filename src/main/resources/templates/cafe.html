@@ -7,8 +7,6 @@
     <script data-require="jquery@1.10.0" data-semver="1.10.0"
             src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -22,8 +20,8 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/../css/main.css">
-    <link rel="stylesheet" href="/../css/cafe-styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cafe-styles.css">
 </head>
 <body>
 <section class="header">
@@ -31,7 +29,7 @@
         <a href="orders-processing.html" class="title">
             echpochmak
         </a>
-        <img class="manager-picture" src="/../img/user.png">
+        <img class="manager-picture" src="/img/user.png">
         <p class="manager-name" th:text="${#authentication.getPrincipal().getFirstname()}+' '+${#authentication.getPrincipal().getLastname()}">
             No Name
         </p>
@@ -47,23 +45,56 @@
         </ul>
     </div>
 </section>
+
 <section class="main">
     <div class="clearfix">
         <form name="search" class="search">
             <input type="submit" value="Искать" class="search-button">
             <label><input type="text" name="search" placeholder="Поиск..."></label>
         </form>
+        <div class="add-item" data-toggle="modal" data-target="#add-item">
+            <img src="/img/adding.png">
+            <span>Добавить новое кафе</span>
+        </div>
     </div>
 
     <div class="container" >
-        <div class="col-md-3" th:each="cafe:${cafes}">
-            <div class="cafe-picture"><img src="/../img/cafe-picture.png"></div>
+        <a class="col-md-3" th:each="cafe:${cafes}" th:href="@{/cafes/cafe/{cafeId}/(cafeId=${cafe.id})}" >
+            <div class="cafe-picture"><img src="/img/cafe-picture.png"></div>
             <div class="description">
                 <h3 class="cafe-name" th:text="${cafe.name}"></h3>
                 <span class="dishes-type" th:text="${cafe.description}"></span>
                 <span class="dishes-number" th:text="${cafe.dishes.size()}"></span>
             </div>
+        </a>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="add-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="dish-description" method="post" th:object="${cafePayLoad}" th:action="@{/cafes/addCafes}" >
+                    <label>Название кафе</label>
+                    <label>
+                        <input type="text" th:field="*{name}" />
+                    </label>
+                    <label>Описание</label>
+                    <label>
+                        <input type="text" th:field = "*{description}" />
+                    </label>
+                    <label>Картинка</label>
+                    <label>
+                        <input type="text" th:field = "*{img}" />
+                    </label>
+                    <!--<input class="load" type="file" name="file" multiple accept="image/*,image/jpeg">-->
+                    <input type="submit" src="/img/arrow">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

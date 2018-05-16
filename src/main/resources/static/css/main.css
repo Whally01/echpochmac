@@ -191,6 +191,7 @@
     margin-bottom: 30px;
     padding: 0;
     border-radius: 5px;
+    cursor: default;
 }
 
 .main .container .col-md-3:nth-child(4n) {

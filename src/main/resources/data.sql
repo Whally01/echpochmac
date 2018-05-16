@@ -1,6 +1,6 @@
 /* Роли*/
 INSERT INTO roles VALUES (1, 'ROLE_ADMIN');
-INSERT INTO roles VALUES (2, 'ROLE_ORDERER');
+INSERT INTO roles VALUES (2, 'ROLE_CLIENT');
 INSERT INTO roles VALUES (3, 'ROLE_COURIER');
 
 INSERT INTO cafes (id, name, description, img) values (DEFAULT, 'Ханума', 'Кавказская, ланчи, ..', null );
