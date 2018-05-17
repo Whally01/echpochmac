@@ -39,4 +39,10 @@ public class DishService implements IDishService {
         return dishRepository.findDishesByCafe(cafe);
     }
 
+    @Override
+    public void removeDishById(String dishId) {
+        dishRepository.removeDishById(Long.parseLong(dishId));
+    }
+
+
 }

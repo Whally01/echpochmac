@@ -29,8 +29,7 @@ public class Dish {
     @Size(max = 40)
     private String description;
 
-    @ManyToOne (fetch=FetchType.LAZY,
-            cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn (name="cafe_id")
     private Cafe cafe;
 

@@ -78,7 +78,9 @@
                 <span>12</span>
                 <img src="/img/dislike.png">
                 <span>4</span>
-                <span class="delete-item" data-toggle="modal" data-target="#delete-item">Удалить</span>
+                <form th:method="delete"  th:action="@{/dish/{id}/delete/(id=${dish.getId()})}">
+                    <input type="submit" class="delete-item" value="delete">
+                </form>
             </div>
         </div>
     </div>
@@ -135,19 +137,19 @@
     </div>
 </div>
 
-<div class="modal fade" id="delete-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form class="clearfix">
-                    <h3>Вы действительно хотите удалить данное блюдо?</h3>
-                    <button type="button" class="cancel">Отмена</button>
-                    <button type="button" class="delete">Удалить</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="modal fade" id="delete-item" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+    <!--<div class="modal-dialog" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-body">-->
+                <!--<form class="clearfix" >-->
+                    <!--<h3>Вы действительно хотите удалить данное блюдо?</h3>-->
+                    <!--<button type="button" class="cancel">Отмена</button>-->
+                    <!--<button type="button" class="delete">Удалить</button>-->
+                <!--</form>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 
 </body>

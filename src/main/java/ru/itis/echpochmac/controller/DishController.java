@@ -31,6 +31,12 @@ public class DishController {
         this.cafeService = cafeService;
     }
 
+//    @DeleteMapping(URLs.DELETE + "/{dishId}")
+//    public String deleteDish(@PathVariable String dishId){
+//        dishService.deleteDishById(Long.parseLong(dishId));
+//        return "redirect:/cafes";
+//    }
+
     /**
      * Добавление блюда
      */
@@ -55,6 +61,14 @@ public class DishController {
         Optional<Dish> dish = dishService.findById(id);
         model.addAttribute("dish", dish);
         return "cafe-menu";
+    }
+
+    @DeleteMapping(URLs.DISH + "/{id}" + URLs.DELETE)
+    public String deleteDish(@PathVariable String id) {
+//        Optional<Dish> dish = dishService.findById(id);
+//        model.addAttribute("dish", dish);
+        dishService.removeDishById(id);
+        return "redirect:/cafes";
     }
 
     /**
