@@ -9,7 +9,6 @@ public class DishPayLoad {
     @Size(max = 40)
     private String name;
 
-    @NotBlank
     @Size(max = 40)
     private String img;
 
