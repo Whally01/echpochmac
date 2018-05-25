@@ -15,4 +15,5 @@ public interface IDishService {
 
     List<Dish> findDishesByCafe(Cafe cafe);
 
+    void removeDishById(String dish_id);
 }
