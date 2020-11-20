@@ -2,11 +2,7 @@
 
 ## Getting Started
 ### Install On your local PC
-use git
 
-```bash
-git clone https://github.com/Whally01/echpochmac.git
-```
 edit ``application.proprties`` file to set your local database info
 ##Running 
 ### on echpochmac root directory: 
